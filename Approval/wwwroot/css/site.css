@@ -17,7 +17,7 @@ for details on configuring this project to bundle and minify static web assets. 
     padding: 0;
 }
 body {
-    background: url("Background2.png")no-repeat;
+    background: url("16.png")no-repeat;
     background-size: 100%; /* Современные браузеры */
 }
 .search {
@@ -38,7 +38,7 @@ body {
     cursor: pointer;
     display: inline-flex;
     font-family: "JetBrains Mono",monospace;
-    height: 34px;
+    height: 40px;
     justify-content: center;
     line-height: 1;
     list-style: none;
@@ -80,7 +80,7 @@ body {
     cursor: pointer;
     display: inline-flex;
     font-family: "JetBrains Mono",monospace;
-    height: 34px;
+    height: 40px;
     justify-content: center;
     line-height: 1;
     list-style: none;
@@ -110,16 +110,16 @@ body {
         box-shadow: #D6D6E7 0 3px 7px inset;
         transform: translateY(2px);
     }
-    input {
+input {
     font-size: 30px;
-    border: 4px solid black;
+    border: 3px solid #0E3386;
     border-radius: 15px;
     outline: none;
-    }
-    tr {
+}
+tr {
     background-color: #c9c9c9;
     color: black;
-    }
+}
     .table {
     position: relative;
     top: 1em;
@@ -128,15 +128,15 @@ body {
     border: none;
     margin-bottom: 20px;
     }
-    .table thead th {
-        font-weight: bold;
-        text-align: left;
-        border: none;
-        padding: 10px 15px;
-        background: #002D62;
-        color: white;
-        font-size: 14px;
-    }
+        .table thead th {
+            font-weight: bold;
+            text-align: left;
+            border: none;
+            padding: 10px 15px;
+            background: #002D62;
+            color: white;
+            font-size: 14px;
+        }
     .table thead tr th:first-child {
         border-radius: 8px 0 0 8px;
     }
@@ -150,9 +150,9 @@ body {
         font-size: 14px;
         vertical-align: top;
     }
-    .table tbody tr:nth-child(even) {
-        background: #B9D9EB;
-    }
+        .table tbody tr:nth-child(even) {
+            background: #E1EBEE;
+        }
     .table tbody tr td:first-child {
         border-radius: 8px 0 0 8px;
     }
