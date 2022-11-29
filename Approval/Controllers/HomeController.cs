@@ -1,4 +1,5 @@
 ﻿using Approval.Models;
+using Approval.Views.Home;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,15 +19,46 @@ namespace Approval.Controllers
             _logger = logger;
         }
 
+
+
+
+
+
+
         public IActionResult Index()
         {
-            return View();
+            return View("Privacy");
         }
+        [HttpPost]
+        public IActionResult Autorize(RegisterAtUser userdata)
+        {
+            UserData user = new UserData(Connect); // проверять userdata 
+
+
+            if (userdata.Password != null)
+            {
+                return RedirectToAction("Privacy");
+            }
+            return View("Index");
+        }
+
+
+
+
+
 
         public IActionResult Privacy()
         {
             return View();
         }
+
+
+
+
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
