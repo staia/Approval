@@ -1,4 +1,6 @@
-﻿<head>
+﻿@model PageData
+
+<head>
     <title>Procurements</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
@@ -6,7 +8,11 @@
 <body>
     <div class="search">
         <input />
-        <button type="button" class="btnCreate">Create</button>
+        <button type="button" class="btnCreate">
+            Create
+
+
+        </button>
         <button type="button" class="btnAllRequest">All Requests</button>
     </div>
 
@@ -25,39 +31,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Tables</td>
-                    <td>300,00 $</td>
-                    <td>GM</td>
-                    <td>01.10.2022</td>
-                    <td>Oleg, Markov</td>
-                    <td>Furniture</td>
-                    <td>AE3469938</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Ventilator</td>
-                    <td>500 $</td>
-                    <td>HD</td>
-                    <td>17.10.2022</td>
-                    <td>Kick, Robert</td>
-                    <td>Furniture</td>
-                    <td>GH4859684</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>IPhone</td>
-                    <td>2500 $</td>
-                    <td>HD</td>
-                    <td>21.10.2022</td>
-                    <td>Schwarz, Alex</td>
-                    <td>Soft-/Hardware</td>
-                    <td>FR4958606</td>
-                </tr>
+                @foreach (var row in Model.ListOrders)
+                {
+                    <tr>
+                        <td>@row.ID</td>
+                        <td>@row.Title</td>
+                        <td>@row.Price</td>
+                        <td>@row.Status</td>
+                        <td>@row.Created</td>
+                        <td>@row.CreatedBy</td>
+                        <td>@row.Category</td>
+                        <td>@row.NumberFromERP</td>
+                    </tr>
+                }             
             </tbody>
         </table>
     </div>
-
-
 </body>
