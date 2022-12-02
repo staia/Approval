@@ -4,12 +4,13 @@
 @{
 }
 
-<head>   
+<head>  
+    <link rel="stylesheet" href="~/css/FormStyle.css" asp-append-version="true" />
         <title>Procurements</title>    
     <div>
-        <link rel="stylesheet" href="~/css/FormStyle.css" asp-append-version="true" />
-     
+        <button type="button" class="btnSave">Save</button>
         <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnCancel">Cancel</button></a>
+        
     </div>
 </head>
 
@@ -42,6 +43,13 @@
                 <label>Attechment  <input class=input2 type="text" name="attachment"></label>
                 <label>Price<input class=input2 type="text" name="price"></label>
             </div>
+
+            <div>
+                <br>
+                <label>Desire date  <input class=input2 type="text" name="desireDate"></label>
+                <label>Purchasing Notes<input class=input2 type="text" name="purchasingNotes"></label>
+            </div>
+
 
             <div class="block">
                 <legend>RELEASE OF PROCUREMENT REQUEST</legend>
