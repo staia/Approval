@@ -8,11 +8,7 @@
 <body>
     <div class="search">
         <input />
-        <button type="button" class="btnCreate">
-            Create
-
-
-        </button>
+        <a asp-controller="Home" asp-action="FormCreate"><button type="button" class="btnCreate">Create</button></a>
         <button type="button" class="btnAllRequest">All Requests</button>
     </div>
 
@@ -36,7 +32,7 @@
                     <tr>
                         <td>@row.ID</td>
                         <td>@row.Title</td>
-                        <td>@row.Price</td>
+                        <td>@string.Format("${0:N3}", row.Price)</td>
                         <td>@row.Status</td>
                         <td>@row.Created</td>
                         <td>@row.CreatedBy</td>

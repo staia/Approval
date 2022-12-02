@@ -28,7 +28,7 @@ namespace Approval.Controllers
         {
             get
             {
-                return new SqlConnection("Server = localhost\\SQLEXPRESS;Database = Orders;Trusted_Connection = True;");
+                return new SqlConnection(_configuration.GetConnectionString("ConnectToMyDB"));
             }
         }
 
@@ -37,12 +37,15 @@ namespace Approval.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult AllOrders()
         {
-            PageData privacyTable = new PageData(Connect);
-            return View(privacyTable);
+            PageData AllOrdersTable = new PageData(Connect);
+            return View(AllOrdersTable);
         }
-
+        public IActionResult FormCreate()
+        {
+            return View();
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

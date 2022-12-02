@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<head>   
+        <title>Procurements</title>    
+    <div>
+        <link rel="stylesheet" href="~/css/FormStyle.css" asp-append-version="true" />
+     
+        <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnCancel">Cancel</button></a>
+    </div>
+</head>
+
+<body>
+<div class="input2">
+        <form>
+            <div class="block">
+                <legend>BASIC PROCUREMENT DATA</legend>
+            </div>
+
+            <div>
+                <label>Title  <input class=input2 type="text" name="title"></label>
+                <label>Category  <input class=input2 type="text" name="category"></label>
+            </div>
+
+            <div>
+                <br>
+                <label>Goal of procurement  <input class=input2 type="text" name="goal"></label>
+                <label>Unit price<input class=input2 type="text" name="unitPrice"></label>
+            </div>
+
+            <div>
+                <br>
+                <label>Place of delivery  <input class=input2 type="text" name="placeDelivery"></label>
+                <label>Amount<input class=input2 type="text" name="amount"></label>
+            </div>
+
+            <div>
+                <br>
+                <label>Attechment  <input class=input2 type="text" name="attachment"></label>
+                <label>Price<input class=input2 type="text" name="price"></label>
+            </div>
+
+            <div class="block">
+                <legend>RELEASE OF PROCUREMENT REQUEST</legend>
+            </div>
+
+            <div>
+                <label>Created by  <input class=input2 type="text" name="createdBy"></label>
+                <label>Head of Department<input class=input2 type="text" name="headOfDepartment"></label>
+            </div>
+
+            <div>
+                <br>
+                <label>General manager  <input class=input2 type="text" name="generalManager"></label>
+                <label>Head of IT<input class=input2 type="text" name="headOfIT"></label>
+            </div>
+
+            <div class="block">
+                <legend>PURCHASE</legend>
+            </div>
+            <div>
+                <label>Number from ERP  <input class=input2 type="text" name="nummberFromERP"></label>                
+            </div>
+
+        </form>
+</div>
+</body>
+ 
