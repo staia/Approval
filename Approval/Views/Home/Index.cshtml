@@ -1,8 +1,32 @@
-﻿@{
+﻿@using System.Security.Claims;
+@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@model UserModel
+ 
+<link rel="stylesheet" href="~/css/IndexStyle.css" asp-append-version="true" />
+@if(User.Identity.IsAuthenticated)
+{
+    <p>you are autorized</p>
+    <a asp-controller="Home" asp-action="SignOut"> exit</a>
+}
+else
+{
+    <p>@Model.Message</p>
+<form asp-controller="Home" asp-action="AllOrders">
+   <div class="login">  
+       <label asp-for="Username"></label>
+    <input asp-for="Username" />
+        </div>
+        <div class="password">  
+    <label asp-for="Password"></label>
+    <input asp-for="Password" />
+        </div>
+        <br>
+ <div>
+            <button type="submit" class="btnSend">Send</button>
+ </div>
+        
+     
+</form>
+}

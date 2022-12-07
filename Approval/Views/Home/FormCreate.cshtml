@@ -4,6 +4,8 @@
 @{
 }
 
+@model OrderCreate
+
 <head>  
     <link rel="stylesheet" href="~/css/FormStyle.css" asp-append-version="true" />
         <title>Procurements</title>    
@@ -21,58 +23,91 @@
                 <legend>BASIC PROCUREMENT DATA</legend>
             </div>
 
-            <div>
-                <label>Title  <input class=input2 type="text" name="title"></label>
-                <label>Category  <input class=input2 type="text" name="category"></label>
-            </div>
+            <div class="table-devide-2">
+                <div>
+                    <label asp-for="Title"> </label>
+                    <input asp-for="Title" class=input2>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Category"></label>
+                    <input asp-for="Category" class=input2>
+                </div>
+                <div>
+                    <label asp-for="GoalOfProcurement">Goal Of Procurement</label>
+                    <input asp-for="GoalOfProcurement" class=input2>
+                </div>
+                <div>
+                    <label asp-for="UnitPrice">Unit Price</label>
+                    <input asp-for="UnitPrice" class=input2> 
+                </div>
 
-            <div>
-                <br>
-                <label>Goal of procurement  <input class=input2 type="text" name="goal"></label>
-                <label>Unit price<input class=input2 type="text" name="unitPrice"></label>
-            </div>
+                <div>                 
+                    <label asp-for="PlaceOfDelivery">Place Of Delivery</label>
+                    <input asp-for="PlaceOfDelivery" class=input2>
+                </div>
+                <div>
+                    <label asp-for="Amount"></label>
+                    <input asp-for="Amount" class=input2>
+                </div>
 
-            <div>
-                <br>
-                <label>Place of delivery  <input class=input2 type="text" name="placeDelivery"></label>
-                <label>Amount<input class=input2 type="text" name="amount"></label>
-            </div>
+                <div> 
+                    <label asp-for="Attachment"></label>  
+                    <input asp-for="Attachment" class =input2>
+                </div>
+                <div>
+                    <label asp-for="Price"></label>
+                    <input asp-for ="Price" class=input2> 
+                    <span asp-validation-for="Price"></span>
+                </div>
 
-            <div>
-                <br>
-                <label>Attechment  <input class=input2 type="text" name="attachment"></label>
-                <label>Price<input class=input2 type="text" name="price"></label>
-            </div>
-
-            <div>
-                <br>
-                <label>Desire date  <input class=input2 type="text" name="desireDate"></label>
-                <label>Purchasing Notes<input class=input2 type="text" name="purchasingNotes"></label>
-            </div>
+                <div> 
+                    <label asp-for="DesireDate">Desire Date</label>
+                    <input asp-for="DesireDate" class=input2>
+                </div>
+                <div>
+                    <label asp-for="PurchasingNotes">Purchasing Notes</label>
+                    <input asp-for="PurchasingNotes" class=input2> 
+                </div>
+                </div>
 
 
+<br />
             <div class="block">
                 <legend>RELEASE OF PROCUREMENT REQUEST</legend>
             </div>
 
+            <div class="table-devide-2">
             <div>
-                <label>Created by  <input class=input2 type="text" name="createdBy"></label>
-                <label>Head of Department<input class=input2 type="text" name="headOfDepartment"></label>
+                    <label>Created by</label>  
+                    <input class=input2 type="text" name="createdBy">
+                </div>
+                <div>
+                    <label>Head of Department</label>
+                    <input class=input2 type="text" name="headOfDepartment">
             </div>
-
             <div>
-                <br>
-                <label>General manager  <input class=input2 type="text" name="generalManager"></label>
-                <label>Head of IT<input class=input2 type="text" name="headOfIT"></label>
+                    <label>General manager</label>
+                    <input class=input2 type="text" name="generalManager">
+                </div>
+                <div>
+                    <label>Head of IT</label>
+                    <input class=input2 type="text" name="headOfIT">
             </div>
-
+            </div>
+<br />
             <div class="block">
                 <legend>PURCHASE</legend>
             </div>
+            <div class="table-devide-2">
             <div>
-                <label>Number from ERP  <input class=input2 type="text" name="nummberFromERP"></label>                
+                    <label>Number from ERP</label>  
+                    <input class=input2 type="text" name="nummberFromERP">
+                </div>
             </div>
+             
 
+            <button type="submit" class="btnSave">Save</button>
         </form>
 </div>
 </body>

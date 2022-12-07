@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Data.SqlTypes;
 
 namespace Approval.Models
 {
@@ -22,4 +24,21 @@ namespace Approval.Models
         public string Category { get; set; }
         public string NumberFromERP { get; set; }
     }
+
+    public class OrderCreate
+    {
+        [Required]
+        public string Title { get; set; }
+        public string Category { get; set; }    
+        public string GoalOfProcurement { get; set; }
+        public SqlMoney UnitPrice { get; set; }
+        public string PlaceOfDelivery { get; set; } 
+        public int Amount { get; set; }  
+        public string Attachment {get; set;}
+        public SqlMoney Price { get; set; }         
+        public DateTime DesireDate { get; set; }
+        public string PurchasingNotes { get; set; }
+    }
+
+
 }
