@@ -56,19 +56,22 @@ body {
     white-space: nowrap;
     will-change: box-shadow,transform;
     font-size: 18px;
+    outline: none;
 }
     .btnCreate:focus {
         box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        outline: none;
     }
     .btnCreate:hover {
         box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
         transform: translateY(-2px);
+        outline: none;
     }
     .btnCreate:active {
         box-shadow: #D6D6E7 0 3px 7px inset;
         transform: translateY(2px);
     }
-    .btnAllRequest {
+.btnAllRequest {
     align-items: center;
     appearance: none;
     background-color: #FCFCFD;
@@ -98,19 +101,22 @@ body {
     white-space: nowrap;
     will-change: box-shadow,transform;
     font-size: 18px;
-    }
+    outline: none;
+}
     .btnAllRequest:focus {
         box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        outline: none;
     }
     .btnAllRequest:hover {
         box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
         transform: translateY(-2px);
+        outline: none;
     }
     .btnAllRequest:active {
         box-shadow: #D6D6E7 0 3px 7px inset;
         transform: translateY(2px);
     }
-    .btnCancel {
+.btnCancel {
     align-items: center;
     appearance: none;
     background-color: #FCFCFD;
@@ -140,16 +146,17 @@ body {
     white-space: nowrap;
     will-change: box-shadow,transform;
     font-size: 18px;
-    }
-    .btnCancel:focus
-    {
+    outline: none;
+}
+    .btnCancel:focus {
         box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-
+        outline: none;
     }
     .btnCancel:hover {
-            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-            transform: translateY(-2px);
-        }
+        box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        transform: translateY(-2px);
+        outline: none;
+    }
 
         .btnCancel:active {
             box-shadow: #D6D6E7 0 3px 7px inset;
@@ -204,10 +211,20 @@ tr {
     .table tbody tr td:last-child {
         border-radius: 0 8px 8px 0;
     }
-     
-
-
-     
+     .submit-message{
+         position: fixed;
+         top: -56px;
+         right: 0;
+         background:rgba(0,80,80, 0.2);
+         border-radius; 15px 0 0 15px;
+         fron-size: 20px;
+         padding: 13px;
+         height:56px;
+         transition: 0,3s;
+     }
+.submit-message {
+    top:0px;
+}
 
 
 

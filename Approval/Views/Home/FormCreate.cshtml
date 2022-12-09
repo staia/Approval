@@ -5,20 +5,17 @@
 }
 
 @model OrderCreate
-
-<head>  
-    <link rel="stylesheet" href="~/css/FormStyle.css" asp-append-version="true" />
-        <title>Procurements</title>    
+ 
+ 
     <div>
         <button type="button" class="btnSave">Save</button>
         <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnCancel">Cancel</button></a>
-        
-    </div>
-</head>
 
-<body>
-<div class="input2">
-        <form>
+    </div>
+<div class="submit-message">@ViewData["ValidationMessage"] 542346564</div>
+<div class="form-style">
+        <div class="text-danger">@ViewData["ValidationMessage"]</div>
+        <form method="post" asp-controller="Home" asp-action="FormCreate">
             <div class="block">
                 <legend>BASIC PROCUREMENT DATA</legend>
             </div>
@@ -110,5 +107,5 @@
             <button type="submit" class="btnSave">Save</button>
         </form>
 </div>
-</body>
+ 
  

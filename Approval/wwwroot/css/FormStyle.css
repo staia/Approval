@@ -56,11 +56,13 @@ body
 
     .btnSave:focus {
         box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        outline: none;
     }
 
     .btnSave:hover {
         box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
         transform: translateY(-2px);
+        outline: none;
     }
 
     .btnSave:active {
@@ -104,16 +106,16 @@ body
     white-space: nowrap;
     will-change: box-shadow,transform;
     font-size: 18px;
+    outline: none;
 }
-    .btnCancel:focus
-    {
+    .btnCancel:focus {
         box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-
+        outline: none;
     }
-    .btnCancel:hover 
-    {
+    .btnCancel:hover {
         box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
         transform: translateY(-2px);
+        outline: none;
     }
     .btnCancel:active 
     {
@@ -122,27 +124,42 @@ body
 
     }
 
- 
 
-.input2 {
-    width: 100%;
-    padding: 3px;
-    font-size: 15px;
+
+.form-style form {
+    padding: 10px;
     border: 1px solid #0E3386;
     border-radius: 10px;
-    outline: none;
-    font-weight: bold;
 }
 
-.block {
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-.table-devide-2 {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
+    .input-validation-error{
+        background:rgba(145,45,45,0.5);
+        color:#fff;
+    }
+
+    .block {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .table-devide-2 {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    .table-devide-2 input{
+        width: 100%;
+        padding: 3px;
+        font-size: 15px;
+        border: 1px solid #0E3386;
+        border-radius: 10px;
+        outline: none;
+        font-weight: 100;
+    }
+    .table-devide-2 label {             
+        padding: 3px;
+        font-size: 15px;
+        font-weight: 700;
+    }
 
 
 

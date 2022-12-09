@@ -1,4 +1,5 @@
 ﻿using Approval.Models;
+using Approval.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -51,21 +52,21 @@ namespace Approval.Controllers
             return View(new UserModel());
         }
 
-        [HttpPost]
-        public IActionResult Index(UserModel model)
-        {
-            if(ModelState.IsValid)
-            {                
-                var responce = model.Autorize(ConnectUser);
-                if (responce.Status == Models.StatusCode.Ok)
-                {
-                    AutorizeUser(responce.Data);
-                    return RedirectToAction("AllOrders");
-                }                 
-                //ConnectUser
-            }
-            return View(model);
-        }
+        //[HttpPost]
+        //public IActionResult Index(UserModel model)
+        //{
+        //    if(ModelState.IsValid)
+        //    {                
+        //        var responce = model.Autorize(ConnectUser);
+        //        if (responce.Status == Models.StatusCode.Ok)
+        //        {
+        //            AutorizeUser(responce.Data);
+        //            return RedirectToAction("AllOrders");
+        //        }                 
+        //        //ConnectUser
+        //    }
+        //    return View(model);
+        //}
 
         private void AutorizeUser(UserModel model)
         {
@@ -95,21 +96,29 @@ namespace Approval.Controllers
             return View(AllOrdersTable);
         }
 
-
-
         public IActionResult FormCreate()
         {
             return View();
         }
-        //public IActionResult FormCreate(ModelAttributes OrderCreate)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        return RedirectToAction("AllOrders", "Home");
-        //    }
-            
-        //    return View();
-        //}
+
+        [HttpPost]
+        public IActionResult FormCreate(OrderCreate orderCreate)
+        {
+            if (ModelState.IsValid)
+            { 
+                    var result = orderCreate.CreateOrder(Connect);
+                    ViewData["ValidationMessage"] = result.ErrorMessage;
+                    if (result.Status == Models.StatusCode.Ok)
+                    {
+                        ModelState.Clear();
+                        return View();
+                    }
+                    return View(orderCreate);
+                
+            }
+            ViewData["ValidationMessage"] = "Data is not required";
+            return View(orderCreate);
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

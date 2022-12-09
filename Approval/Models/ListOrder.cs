@@ -31,11 +31,11 @@ namespace Approval.Models
         public string Title { get; set; }
         public string Category { get; set; }    
         public string GoalOfProcurement { get; set; }
-        public SqlMoney UnitPrice { get; set; }
+        public double UnitPrice { get; set; }
         public string PlaceOfDelivery { get; set; } 
         public int Amount { get; set; }  
         public string Attachment {get; set;}
-        public SqlMoney Price { get; set; }         
+        public double Price { get; set; }         
         public DateTime DesireDate { get; set; }
         public string PurchasingNotes { get; set; }
     }
