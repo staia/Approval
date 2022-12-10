@@ -38,6 +38,11 @@ namespace Approval.Models
         public double Price { get; set; }         
         public DateTime DesireDate { get; set; }
         public string PurchasingNotes { get; set; }
+        public string CreatedBy { get; set; }
+        public string HeadOfDepartment { get; set; }
+        public string GeneralManager { get; set; }
+        public string HeadOfIT { get; set; }
+        public string NumberFromERP { get; set; }
     }
 
 

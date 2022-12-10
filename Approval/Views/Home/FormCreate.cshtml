@@ -8,8 +8,8 @@
  
  
     <div>
-        <button type="button" class="btnSave">Save</button>
-        <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnCancel">Cancel</button></a>
+    @*<button type="button" class="btnUniversal">Save</button>*@
+    <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnUniversalFormCreate">Cancel</button></a>
 
     </div>
 <div class="submit-message">@ViewData["ValidationMessage"] Test for Test</div>
@@ -19,12 +19,11 @@
             <div class="block">
                 <legend>BASIC PROCUREMENT DATA</legend>
             </div>
-
             <div class="table-devide-2">
                 <div>
-                    <label asp-for="Title"> </label>
+                    <label asp-for="Title"> </label>                    
                     <input asp-for="Title" class=input2>
-                    <span asp-validation-for="Title" class="text-danger"></span>
+                    <span asp-validation-for="Title" class="text-danger"></span>                     
                 </div>
                 <div>
                     <label asp-for="Category"></label>
@@ -54,8 +53,8 @@
                 </div>
                 <div>
                     <label asp-for="Price"></label>
-                    <input asp-for ="Price" class=input2> 
-                    <span asp-validation-for="Price"></span>
+                    <input asp-for ="Price" class=input2>
+                <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
 
                 <div> 
@@ -67,29 +66,26 @@
                     <input asp-for="PurchasingNotes" class=input2> 
                 </div>
                 </div>
-
-
-<br />
+                <br />
             <div class="block">
                 <legend>RELEASE OF PROCUREMENT REQUEST</legend>
             </div>
-
             <div class="table-devide-2">
             <div>
-                    <label>Created by</label>  
-                    <input class=input2 type="text" name="createdBy">
+                <label asp-for="CreatedBy">Created by</label>
+                <input asp-for="CreatedBy" class=input2>                   
                 </div>
                 <div>
-                    <label>Head of Department</label>
-                    <input class=input2 type="text" name="headOfDepartment">
+                <label asp-for="HeadOfDepartment">Head Of Department</label>
+                <input asp-for="HeadOfDepartment" class=input2>                   
             </div>
             <div>
-                    <label>General manager</label>
-                    <input class=input2 type="text" name="generalManager">
+                <label asp-for="GeneralManager">General Manager</label>
+                <input asp-for="GeneralManager" class=input2>                    
                 </div>
                 <div>
-                    <label>Head of IT</label>
-                    <input class=input2 type="text" name="headOfIT">
+                <label asp-for="HeadOfIT">Head Of IT</label>
+                <input asp-for="HeadOfIT" class=input2>
             </div>
             </div>
 <br />
@@ -98,13 +94,13 @@
             </div>
             <div class="table-devide-2">
             <div>
-                    <label>Number from ERP</label>  
-                    <input class=input2 type="text" name="nummberFromERP">
+                <label asp-for="NumberFromERP">Number From ERP</label>
+                <input asp-for="NumberFromERP" class=input2>                   
                 </div>
             </div>
-             
 
-            <button type="submit" class="btnSave">Save</button>
+            <br />
+        <button type="submit" class="btnUniversalFormCreate">Save</button>
         </form>
 </div>
  
