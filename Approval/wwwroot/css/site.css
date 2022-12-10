@@ -17,8 +17,11 @@ for details on configuring this project to bundle and minify static web assets. 
     padding: 0;
 }
 body {
-    background: url("16.png")no-repeat;
-    background-size: 100%; /* Современные браузеры */
+    background: url(16.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 .search {
     margin: 1em;
