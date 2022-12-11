@@ -33,7 +33,7 @@ namespace Approval.Controllers
         {
             get
             {
-                return new SqlConnection(_configuration.GetConnectionString("ConnectToMyDataBese"));
+                return new SqlConnection(_configuration.GetConnectionString("Remote"));
             }
         }
 
@@ -46,7 +46,16 @@ namespace Approval.Controllers
         {
             if(User.Identity.IsAuthenticated)
             {
-                ViewData["ValidationMessage"] = "Autorize";
+                var user = User.Identities.First().Claims.ToList();
+
+                if (User.IsInRole("Admin"))
+                {
+                    ViewData["ValidationMessage"] = "Autorize Admin";
+                }
+                else
+                {
+                    ViewData["ValidationMessage"] = "Autorize User";
+                }
             }
             else ViewData["ValidationMessage"] = "Not ";
 
@@ -55,10 +64,6 @@ namespace Approval.Controllers
         [HttpPost]   
         public IActionResult Autorize(RegisterAtUserModel userdata)
         {
-            if (User != null)
-            {
-
-            }
             if (ModelState.IsValid)
             {
                 //var responce = userdata.Autorize(Conneсt);
@@ -75,9 +80,9 @@ namespace Approval.Controllers
                     AvtotizeUser(res.Date);
                     return RedirectToAction("Index");
                 }
+                return View("Index", userdata);
             }
             ViewData["ValidationMessage"] = "Data is not required";
-
             return View("Index", userdata);
         }
 
@@ -86,10 +91,12 @@ namespace Approval.Controllers
         {
             List<Claim> claims = new List<Claim>()                 // личность на сервери 
             {
-                 new Claim(ClaimTypes.Role, "User"),           // авторизация
-                 new Claim(ClaimTypes.Email, "bis@com"),
+                 new Claim(ClaimTypes.Hash, userdata.IdUser.ToString()),
+                 new Claim(ClaimTypes.Role, userdata.Role),          
+                 new Claim(ClaimTypes.Email, userdata.Email),          
+                
             }; 
-            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Role, ClaimTypes.Role);
+            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Hash, ClaimTypes.Role);
             ClaimsPrincipal avtorizeHead = new ClaimsPrincipal(identity);
             HttpContext.SignInAsync(avtorizeHead);
         }

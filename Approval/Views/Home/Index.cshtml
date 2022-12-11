@@ -8,6 +8,7 @@
 @if(User.Identity.IsAuthenticated)
 {
     <p>Вы авторизованны</p>
+    <p>@ViewData["ValidationMessage"]</p>
 @*
     @if(User.IsInRole("Admin"))
     {
