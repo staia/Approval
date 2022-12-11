@@ -15,7 +15,7 @@ namespace Approval.Models
             {
                 using (IDbConnection database = connect)       
                 {
-                    baseResponce.Date = database.QuerySingle<RegisterAtUserModel>("SELECT * FROM Avtorize WHERE UserName = @UserName AND EnterPassword = @EnterPassword", userdata);
+                    baseResponce.Data = database.QuerySingle<RegisterAtUserModel>("SELECT * FROM Avtorize WHERE UserName = @UserName AND EnterPassword = @EnterPassword", userdata);
                 }
             }
             catch(System.Exception ex)

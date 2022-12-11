@@ -24,7 +24,7 @@ namespace Approval.Models
                 baseResponce.Status = StatusCode.Error;
                 baseResponce.ErrorMessage = "ex.Message";
             }
-            baseResponce.Data= user;    
+            baseResponce.Data = user;    
             //if(user == null)
             //{
             //    baseResponce.Status = StatusCode.NotFound;

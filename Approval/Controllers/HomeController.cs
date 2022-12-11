@@ -3,27 +3,15 @@ using Approval.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting.Server;
-using Approval.Views.Home;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
-using System.Net;
-using System.Reflection;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 
 namespace Approval.Controllers
@@ -38,7 +26,7 @@ namespace Approval.Controllers
             _logger = logger;
             _configuration = configuration;  
         }
-        public IDbConnection Connext
+        public IDbConnection Conneсt
         {
             get
             {
@@ -76,7 +64,7 @@ namespace Approval.Controllers
         {
             if (ModelState.IsValid)
             { 
-                    var result = orderCreate.CreateOrder(Connect);
+                    var result = orderCreate.CreateOrder(Conneсt);
                     ViewData["ValidationMessage"] = result.ErrorMessage;
                     if (result.Status == Models.StatusCode.Ok)
                     {
@@ -99,13 +87,13 @@ namespace Approval.Controllers
                 //{
                 //}
 
-                var res = userdata.UserModelRegister(Connext);
+                var res = userdata.UserModelRegister(Conneсt);
                 ViewData["ValidationMessage"] = res.ErrorMessage;
                 if (res.Status == Models.StatusCode.Ok)
                 {
                     // ModelState.Clear();                                   //очистеть после заполнения
                     // return View();
-                    AvtotizeUser(res.Date);
+                    AvtotizeUser(res.Data);
                     return RedirectToAction("Index");
                 }
                 return View("Index", userdata);

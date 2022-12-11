@@ -24,9 +24,6 @@ namespace Approval.Models
         public string Category { get; set; }
         public string NumberFromERP { get; set; }
     }
-    public class AnRegisterUser : RegisterAtUser
-    { 
-        public string Email { get; set; }
 
     public class OrderCreate
     {
