@@ -53,6 +53,7 @@ namespace Approval
             app.UseAuthentication();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
           
 

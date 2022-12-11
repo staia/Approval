@@ -145,6 +145,114 @@ li {
     opacity: .0;
     transition: all .8s .4s ease;
 }
+.btnUniversalAllOrders {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 40px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    left: 5%;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+    outline: none;
+}
+    .btnUniversalAllOrders:focus {
+        box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        outline: none;
+    }
+    .btnUniversalAllOrders:hover {
+        box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        transform: translateY(-2px);
+        outline: none;
+    }
+    .btnUniversalAllOrders:active {
+        box-shadow: #D6D6E7 0 3px 7px inset;
+        transform: translateY(2px);
+    }
+ 
+            input {
+    font-size: 30px;
+    border: 3px solid #0E3386;
+    border-radius: 15px;
+    outline: none;
+}
+tr {
+    background-color: #c9c9c9;
+    color: black;
+}
+    .table {
+    position: relative;
+    top: 1em;
+    left: 10em;
+    width: 100%;
+    border: none;
+    margin-bottom: 20px;
+    }
+        .table thead th {
+            font-weight: bold;
+            text-align: left;
+            border: none;
+            padding: 10px 15px;
+            background: #002D62;
+            color: white;
+            font-size: 14px;
+        }
+    .table thead tr th:first-child {
+        border-radius: 8px 0 0 8px;
+    }
+    .table thead tr th:last-child {
+        border-radius: 0 8px 8px 0;
+    }
+    .table tbody td {
+        text-align: left;
+        border: none;
+        padding: 10px 15px;
+        font-size: 14px;
+        vertical-align: top;
+    }
+        .table tbody tr:nth-child(even) {
+            background: #E1EBEE;
+        }
+    .table tbody tr td:first-child {
+        border-radius: 8px 0 0 8px;
+    }
+    .table tbody tr td:last-child {
+        border-radius: 0 8px 8px 0;
+    }
+     .submit-message{
+         position: fixed;
+         top: -56px;
+         right: 0;
+         background:rgba(0,80,80, 0.2);
+         border-radius; 15px 0 0 15px;
+         fron-size: 20px;
+         padding: 13px;
+         height:56px;
+         transition: 0,3s;
+     }
+.submit-message {
+    top:0px;
 
 .success-left {
     transform: translateX(-406px);

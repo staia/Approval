@@ -1,9 +1,16 @@
 ﻿using Approval.Models;
+using Approval.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting.Server;
 using Approval.Views.Home;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,10 +19,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Net;
 using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
+
 
 namespace Approval.Controllers
 {
@@ -60,6 +69,25 @@ namespace Approval.Controllers
             else ViewData["ValidationMessage"] = "Not ";
 
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult FormCreate(OrderCreate orderCreate)
+        {
+            if (ModelState.IsValid)
+            { 
+                    var result = orderCreate.CreateOrder(Connect);
+                    ViewData["ValidationMessage"] = result.ErrorMessage;
+                    if (result.Status == Models.StatusCode.Ok)
+                    {
+                        ModelState.Clear();
+                        return View();
+                    }
+                    return View(orderCreate);
+                
+            }
+            ViewData["ValidationMessage"] = "Data is not required";
+            return View(orderCreate);
         }
         [HttpPost]   
         public IActionResult Autorize(RegisterAtUserModel userdata)

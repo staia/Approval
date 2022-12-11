@@ -3,14 +3,14 @@
     public class BaseResponce<T>
     {
         public string ErrorMessage { get; set; }
-        public T Date { get; set; }
+        public T Data { get; set; }
         public StatusCode Status { get; set; }
     }
-    public enum StatusCode    // фантик
+    public enum StatusCode
     {
-       Ok = 200,
-       NotFound = 404,
-       Error = 505
-    }
+        Ok = 200,
+        NotFound = 404,
+        Error = 500
 
+    }
 }
