@@ -39,9 +39,48 @@ namespace Approval.Controllers
 
 
 
+        public IActionResult AllOrders()
+        {
+            PageData AllOrdersTable = new PageData(Conneсt);
+            return View(AllOrdersTable);
+        }
+
+        public IActionResult FormCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult FormCreate(OrderCreate orderCreate)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = orderCreate.CreateOrder(Conneсt);
+                ViewData["ValidationMessage"] = result.ErrorMessage;
+                if (result.Status == Models.StatusCode.Ok)
+                {
+                    ModelState.Clear();
+                    return View();
+                }
+                return View(orderCreate);
+
+            }
+            ViewData["ValidationMessage"] = "Data is not required";
+            return View(orderCreate);
+        }
+
+
+
+
+
+
+
+
+
+
         public IActionResult Index()
         {
-            if(User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
                 var user = User.Identities.First().Claims.ToList();
 
@@ -59,24 +98,7 @@ namespace Approval.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult FormCreate(OrderCreate orderCreate)
-        {
-            if (ModelState.IsValid)
-            { 
-                    var result = orderCreate.CreateOrder(Conneсt);
-                    ViewData["ValidationMessage"] = result.ErrorMessage;
-                    if (result.Status == Models.StatusCode.Ok)
-                    {
-                        ModelState.Clear();
-                        return View();
-                    }
-                    return View(orderCreate);
-                
-            }
-            ViewData["ValidationMessage"] = "Data is not required";
-            return View(orderCreate);
-        }
+
         [HttpPost]   
         public IActionResult Autorize(RegisterAtUserModel userdata)
         {
@@ -102,7 +124,6 @@ namespace Approval.Controllers
             return View("Index", userdata);
         }
 
-         
         void AvtotizeUser(RegisterAtUserModel userdata)
         {
             List<Claim> claims = new List<Claim>()                 // личность на сервери 
