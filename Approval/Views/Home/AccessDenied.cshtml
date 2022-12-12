@@ -1,9 +1,21 @@
-﻿<link rel="stylesheet" href="~/css/FormStyle.css" />
-@model PageData 
+﻿
+    @*<link rel="stylesheet" href="~/css/FormStyle.css" />*@
+    @*<div>*@
+@*<div class="text-center"></div>*@
+@*<h1 class="text-danger">Access Denied</h1>*@
+@*<h6 class="text-danger">You do not have persmission to view this resource</h6>
+<img src="NoAccess.png" style="height:300px; width:300px" />*@
+@*</div>*@
 
-@if(User.Identity.IsAuthenticated)
+
+
+
+<link rel="stylesheet" href="~/css/FormStyle.css" />
+@model PageData
+
+@if (User.Identity.IsAuthenticated)
 {
-    if(User.IsInRole("Admin"))
+    if (User.IsInRole("Admin"))
     {
         <div class="search">
             <input />
@@ -50,4 +62,3 @@
         </footer>
     }
 }
- 

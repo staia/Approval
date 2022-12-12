@@ -9,7 +9,7 @@ namespace Approval.Models
         {
             BaseResponce<RegisterAtUserModel> baseResponce = new BaseResponce<RegisterAtUserModel>();
             baseResponce.Status = StatusCode.Ok;
-            baseResponce.ErrorMessage = "Data accses";     
+            baseResponce.ErrorMessage = "Data access";     
 
             try
             {

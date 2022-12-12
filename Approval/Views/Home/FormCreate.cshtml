@@ -8,11 +8,22 @@
  
  
     <div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin"))
+        {
+            <a asp-controller="Home" asp-action="AccessDenied"><button type="button" id="B1" class="btnUniversalFormCreate">Cancel</button></a>
+        }
+        else
+        {
+          
+        }        
+    }
     @*<button type="button" class="btnUniversal">Save</button>*@
-    <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnUniversalFormCreate">Cancel</button></a>
+    
 
     </div>
-<div class="submit-message">@ViewData["ValidationMessage"] Test for Test</div>
+@*<div class="submit-message">@ViewData["ValidationMessage"] Test for Test</div>*@
 <div class="form-style">
         <div class="text-danger">@ViewData["ValidationMessage"]</div>
         <form method="post" asp-controller="Home" asp-action="FormCreate">

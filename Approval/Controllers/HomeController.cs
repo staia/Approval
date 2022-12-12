@@ -21,7 +21,8 @@ namespace Approval.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, 
+                                IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;  
@@ -33,12 +34,6 @@ namespace Approval.Controllers
                 return new SqlConnection(_configuration.GetConnectionString("Remote"));
             }
         }
-
-
-
-
-
-
         public IActionResult AllOrders()
         {
             PageData AllOrdersTable = new PageData(Conneсt);
@@ -48,6 +43,10 @@ namespace Approval.Controllers
         public IActionResult FormCreate()
         {
             return View();
+            void Hide_Click(Object Sender, EventArgs e)
+            {
+                
+            }
         }
 
         [HttpPost]
@@ -68,15 +67,6 @@ namespace Approval.Controllers
             ViewData["ValidationMessage"] = "Data is not required";
             return View(orderCreate);
         }
-
-
-
-
-
-
-
-
-
 
         public IActionResult Index()
         {
@@ -148,14 +138,7 @@ namespace Approval.Controllers
         {
             return View();
         }
-
-
-
-
-
-
-
-
+         
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
