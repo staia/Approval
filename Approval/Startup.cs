@@ -28,7 +28,7 @@ namespace Approval
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.LoginPath = "/account/signin";
+                    options.LoginPath = "/Home/AccessDenied";
                 });
         }
 

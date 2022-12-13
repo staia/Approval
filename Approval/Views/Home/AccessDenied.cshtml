@@ -1,64 +1,10 @@
-﻿
-    @*<link rel="stylesheet" href="~/css/FormStyle.css" />*@
-    @*<div>*@
-@*<div class="text-center"></div>*@
-@*<h1 class="text-danger">Access Denied</h1>*@
-@*<h6 class="text-danger">You do not have persmission to view this resource</h6>
-<img src="NoAccess.png" style="height:300px; width:300px" />*@
-@*</div>*@
-
-
-
-
-<link rel="stylesheet" href="~/css/FormStyle.css" />
-@model PageData
-
-@if (User.Identity.IsAuthenticated)
-{
-    if (User.IsInRole("Admin"))
-    {
-        <div class="search">
-            <input />
-            <a asp-controller="Home" asp-action="FormCreate"><button type="button" class="btnUniversalAllOrders">Create</button></a>
-
-            <button type="button" class="btnUniversalAllOrders" action="Hide_Click">All Requests</button>
+﻿@model PageData
+<link rel="stylesheet" href="~/css/AccessDenied.css" />
+    <div>
+        <div class="center">
+        <p class="text-danger">Access Denied</p>
+        <h4 class="text-danger">You do not have persmission to view this resource</h4>
+        <img src="~/NoAccess.png" />
         </div>
+    </div>
 
-        <div class="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Price</th>
-                        <th>Status</th>
-                        <th>Created</th>
-                        <th>Created by</th>
-                        <th>Category</th>
-                        <th>Number from ERP</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var row in Model.ListOrders)
-                    {
-                        <tr>
-                            <td>@row.ID</td>
-                            <td>@row.Title</td>
-                            <td>@string.Format("${0:N2}", row.Price)</td>
-                            <td>@row.Status</td>
-                            <td>@row.Created</td>
-                            <td>@row.CreatedBy</td>
-                            <td>@row.Category</td>
-                            <td>@row.NumberFromERP</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                <a asp-area="" asp-controller="Home" asp-action="AllOrders">Requests that you have created / approved</a>
-            </div>
-        </footer>
-    }
-}

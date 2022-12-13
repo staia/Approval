@@ -34,6 +34,8 @@ namespace Approval.Controllers
                 return new SqlConnection(_configuration.GetConnectionString("Remote"));
             }
         }
+
+        [Authorize(Roles ="Admin")]
         public IActionResult AllOrders()
         {
             PageData AllOrdersTable = new PageData(Conneсt);
@@ -138,7 +140,12 @@ namespace Approval.Controllers
         {
             return View();
         }
-         
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

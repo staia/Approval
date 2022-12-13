@@ -2,12 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+      
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Approval</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     
-    
+     
 </head>
 <body>
     <header>
@@ -18,33 +19,49 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                 
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AccessDenied">Access Denied</a>
-                        </li>
+                         
                        
                         
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FormCreate">Create</a>
-                            </li>
-                             
+                                <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FormCreate"> </a>
+                                </li>
+                            
                         }
 
-                        @if (User.IsInRole("Admin"))
+                       @* @if (User.IsInRole("Admin"))
                         {
+                             
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllOrders">Orders</a>
                             </li>
                         }
+                        *@
                     </ul>
                 </div>
+                 @if (User.Identity.IsAuthenticated)
+        {
+        if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Home" asp-action="AllOrders"><button type="button"  class="btnUniversalAllOrders">All Requests</button></a>
+            }
+        else
+            {
+               <a asp-controller="Home" asp-action="Index"><button type="button"  class="btnUniversalAllOrders">Cancel</button></a>
+            }        
+        }
             </div>
+            
+            
+    <a asp-controller="Home" asp-action="SignOut" ><button type="button"  class="btnUniversalAllOrders">Sign Out</button></a>
+     
         </nav>
     </header>
     <div class="container">

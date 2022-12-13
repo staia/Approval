@@ -8,8 +8,12 @@
 
 @if(User.Identity.IsAuthenticated)
 {
+     Context.Response.Redirect(Url.Action("FormCreate", "Home"));
+    @*RedirectToAction("FormCreate");*@
+   
+@*
     <p>Вы авторизованны</p>
-    <p>@ViewData["ValidationMessage"]</p>
+    <p>@ViewData["ValidationMessage"]</p>*@
 @*
     @if(User.IsInRole("Admin"))
     {
@@ -19,7 +23,8 @@
     {
         <p></p>
     }*@
-    <a asp-controller="Home" asp-action="SignOut" >Sign Out</a>
+    @*<a asp-controller="Home" asp-action="SignOut" >Sign Out</a>*@
+     
 }
 else
 {

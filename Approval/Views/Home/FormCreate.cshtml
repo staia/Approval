@@ -8,17 +8,17 @@
  
  
     <div>
-    @if (User.Identity.IsAuthenticated)
+    @*@if (User.Identity.IsAuthenticated)
     {
         if (User.IsInRole("Admin"))
         {
-            <a asp-controller="Home" asp-action="AccessDenied"><button type="button" id="B1" class="btnUniversalFormCreate">Cancel</button></a>
+            <a asp-controller="Home" asp-action="AllOrders"><button type="button"  class="btnUniversalFormCreate">Cancel</button></a>
         }
         else
         {
-          
+           <a asp-controller="Home" asp-action="Index"><button type="button"  class="btnUniversalFormCreate">Exit</button></a>
         }        
-    }
+    }*@
     @*<button type="button" class="btnUniversal">Save</button>*@
     
 

@@ -107,13 +107,6 @@
     padding: 0;
 }
 
-body {
-    background: url(16.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 
 .search {
     margin: 1em;
@@ -121,7 +114,6 @@ body {
     left: 6em;
     text-align: center;
 }
-
 .btnUniversalAllOrders {
     align-items: center;
     appearance: none;
@@ -141,8 +133,8 @@ body {
     overflow: hidden;
     padding-left: 16px;
     padding-right: 16px;
-    position: relative;
-    left: 5%;
+   /* position: relative;
+    left: 5%;*/
     text-align: left;
     text-decoration: none;
     transition: box-shadow .15s,transform .15s;
