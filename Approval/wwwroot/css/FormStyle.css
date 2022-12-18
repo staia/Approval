@@ -65,10 +65,11 @@
         color:#fff;
     }
 
-    .block {
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
+.block {
+    margin-bottom: 10px;
+    font-weight: bold;
+    padding: 1%;
+}
     .table-devide-2 {
         width: 100%;
         display: grid;
@@ -88,7 +89,9 @@
         font-size: 15px;
         font-weight: 700;
     }
-
+.cells-style {
+    padding: 2%;
+}
 
 
 

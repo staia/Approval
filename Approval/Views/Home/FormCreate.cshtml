@@ -31,80 +31,85 @@
                 <legend>BASIC PROCUREMENT DATA</legend>
             </div>
             <div class="table-devide-2">
-                <div>
+                <div class="cells-style">
                     <label asp-for="Title"> </label>                    
                     <input asp-for="Title" class=input2>
                     <span asp-validation-for="Title" class="text-danger"></span>                     
                 </div>
-                <div>
+                <div class ="cells-style">
                     <label asp-for="Category"></label>
                     <input asp-for="Category" class=input2>
                 </div>
-                <div>
+                <div class="cells-style">
                     <label asp-for="GoalOfProcurement">Goal Of Procurement</label>
                     <input asp-for="GoalOfProcurement" class=input2>
                 </div>
-                <div>
+            <div class="cells-style">
                     <label asp-for="UnitPrice">Unit Price</label>
                     <input asp-for="UnitPrice" class=input2> 
                 </div>
 
-                <div>                 
-                    <label asp-for="PlaceOfDelivery">Place Of Delivery</label>
+            <div class="cells-style">
+                <label asp-for="PlaceOfDelivery">Place Of Delivery</label>
                     <input asp-for="PlaceOfDelivery" class=input2>
                 </div>
-                <div>
+            <div class="cells-style">
                     <label asp-for="Amount"></label>
                     <input asp-for="Amount" class=input2>
                 </div>
 
-                <div> 
-                    <label asp-for="Attachment"></label>  
+            <div class="cells-style">
+                <label asp-for="Attachment"></label>  
                     <input asp-for="Attachment" class =input2>
                 </div>
-                <div>
+                <div class="cells-style">
                     <label asp-for="Price"></label>
                     <input asp-for ="Price" class=input2>
                 <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
 
-                <div> 
-                    <label asp-for="DesireDate">Desire Date</label>
+                <div class="cells-style">
+                <label asp-for="DesireDate">Desire Date</label>
                     <input asp-for="DesireDate" class=input2>
                 </div>
-                <div>
+
+                <div class="cells-style">
                     <label asp-for="PurchasingNotes">Purchasing Notes</label>
                     <input asp-for="PurchasingNotes" class=input2> 
                 </div>
                 </div>
-                <br />
-            <div class="block">
+                <br />                                                                                @*ERROR, HAVE TO CHANGE*@
+                <div class="block">
                 <legend>RELEASE OF PROCUREMENT REQUEST</legend>
-            </div>
-            <div class="table-devide-2">
-            <div>
-                <label asp-for="CreatedBy">Created by</label>
-                <input asp-for="CreatedBy" class=input2>                   
                 </div>
-                <div>
-                <label asp-for="HeadOfDepartment">Head Of Department</label>
-                <input asp-for="HeadOfDepartment" class=input2>                   
-            </div>
-            <div>
-                <label asp-for="GeneralManager">General Manager</label>
-                <input asp-for="GeneralManager" class=input2>                    
+                <div class="table-devide-2">
+
+                    <div class="cells-style">
+                    <label asp-for="CreatedBy">Created by</label>
+                    <input asp-for="CreatedBy" class=input2>                   
+                    </div>
+
+                    <div class="cells-style">
+                    <label asp-for="HeadOfDepartment">Head Of Department</label>
+                    <input asp-for="HeadOfDepartment" class=input2>                   
+                    </div>
+
+                    <div class="cells-style">
+                    <label asp-for="GeneralManager">General Manager</label>
+                    <input asp-for="GeneralManager" class=input2>                    
+                    </div>
+
+                    <div class="cells-style">
+                    <label asp-for="HeadOfIT">Head Of IT</label>
+                    <input asp-for="HeadOfIT" class=input2>
+                    </div>
                 </div>
-                <div>
-                <label asp-for="HeadOfIT">Head Of IT</label>
-                <input asp-for="HeadOfIT" class=input2>
-            </div>
-            </div>
 <br />
             <div class="block">
                 <legend>PURCHASE</legend>
             </div>
             <div class="table-devide-2">
-            <div>
+            <div class="cells-style">
                 <label asp-for="NumberFromERP">Number From ERP</label>
                 <input asp-for="NumberFromERP" class=input2>                   
                 </div>
