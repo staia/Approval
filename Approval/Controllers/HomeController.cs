@@ -1,5 +1,6 @@
 ﻿using Approval.Models;
 using Approval.Services;
+using Dapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -96,6 +97,24 @@ namespace Approval.Controllers
             else ViewData["ValidationMessage"] = "Not ";
 
             return View();
+        }
+        [HttpPost]
+
+        public IActionResult Scan<UserModel>(AutorizeUserModel userscan, IDbConnection connectUser)
+        {
+
+            using (IDbConnection database = connectUser)
+            {
+               var sc = database.QuerySingle("SELECT * FROM UserData WHERE Email = @Email, EnterPassword = @EnterPassword ", userscan);
+                if(sc == null)
+                {
+                    database.Add
+                }
+               
+            }
+            ViewData["ValidationMessage"] = "Repit user";
+            return View("Index", userscan);
+
         }
 
 
