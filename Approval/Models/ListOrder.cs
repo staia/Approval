@@ -1,24 +1,25 @@
-﻿using System;
+﻿using Approval.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlTypes;
 
 namespace Approval.Models
 {
-    public enum Status
-    {
-        Create,
-        HeadOfDepartment,
-        HeadOfITDepartment,
-        GeneralManager,
-        Orded
-    }
+    //public enum Status
+    //{
+    //    Create,
+    //    HeadOfDepartment,
+    //    HeadOfITDepartment,
+    //    GeneralManager,
+    //    Orded
+    //}
 
     public class ListOrder
     {
         public int ID { get; set; }
         public string Title { get; set; }
         public double Price { get; set; }
-        public string Status { get; set; }
+        public Status Status { get; set; }
         public DateTime Created { get; set; }
         public string CreatedBy { get; set; }
         public string Category { get; set; }
@@ -27,12 +28,13 @@ namespace Approval.Models
 
     public class OrderCreate
     {
+        public int ID { get; set; }  
         [Required]
         public string Title { get; set; }
-        public string Category { get; set; }    
+        public CategoryEnums Category { get; set; }    
         public string GoalOfProcurement { get; set; }
         public double UnitPrice { get; set; }
-        public string PlaceOfDelivery { get; set; } 
+        public DeliveryEnum PlaceOfDelivery { get; set; } 
         public int Amount { get; set; }  
         public string Attachment {get; set;}
         public double Price { get; set; }         
@@ -43,6 +45,7 @@ namespace Approval.Models
         public string GeneralManager { get; set; }
         public string HeadOfIT { get; set; }
         public string NumberFromERP { get; set; }
+        public string WarehouseManager { get; set; }
     }
 
 

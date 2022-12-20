@@ -24,6 +24,7 @@
                         <th>Created by</th>
                         <th>Category</th>
                         <th>Number from ERP</th>
+                        <th>Change</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,13 +32,14 @@
                     {
                         <tr>
                             <td>@row.ID</td>
-                            <td>@row.Title</td>
+                            <td><a asp-action="Preview" asp-controller="Home" asp-route-idRequest="@row.ID">@row.Title</a></td>
                             <td>@string.Format("${0:N2}", row.Price)</td>
                             <td>@row.Status</td>
                             <td>@row.Created</td>
                             <td>@row.CreatedBy</td>
                             <td>@row.Category</td>
                             <td>@row.NumberFromERP</td>
+                            <td><a asp-action="Edit" asp-controller="Home" asp-route-idRequest="@row.ID">Edit</a></td>
                         </tr>
                     }
                 </tbody>

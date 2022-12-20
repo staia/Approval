@@ -36,14 +36,6 @@
                             
                         }
 
-                       @* @if (User.IsInRole("Admin"))
-                        {
-                             
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllOrders">Orders</a>
-                            </li>
-                        }
-                        *@
                     </ul>
                 </div>
                  @if (User.Identity.IsAuthenticated)

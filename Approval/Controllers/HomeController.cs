@@ -95,12 +95,7 @@ namespace Approval.Controllers
         public IActionResult Autorize(RegisterAtUserModel userdata)
         {
             if (ModelState.IsValid)
-            {
-                //var responce = userdata.Autorize(Conneсt);
-                //if(responce.Status = Models.StatusCode.Ok)
-                //{
-                //}
-
+            { 
                 var res = userdata.UserModelRegister(Conneсt);
                 ViewData["ValidationMessage"] = res.ErrorMessage;
                 if (res.Status == Models.StatusCode.Ok)
@@ -144,6 +139,37 @@ namespace Approval.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        public IActionResult Preview()
+        {
+            return View();
+        }
+
+        public IActionResult Edit(int idRequest)
+        {
+            var order = OrderServices.GetOrder(idRequest, Conneсt);     // завернуть в BaseResponce
+            return View(order);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int idRequest, string data)
+        {
+            var order = OrderServices.GetOrder(idRequest, Conneсt);      
+            return View("Preview", order);
+        }
+
+        //[HttpGet]
+        //public IActionResult Change(int id)
+        //{
+        //    return View();
+        //}
+
+        [HttpPost]
+        public IActionResult Change(int idRequest, string data)
+        {
+            var order = OrderServices.GetOrder(idRequest, Conneсt);
+            return View("Preview", order);
         }
 
 

@@ -30,5 +30,15 @@ namespace Approval.Services
             }
              return responce;
         }
+
+        public static OrderCreate GetOrder(int idOrder, IDbConnection connect)
+        { 
+            OrderCreate order = new OrderCreate();
+                using (IDbConnection database = connect)
+                {                    
+                    order= database.QueryFirstOrDefault<OrderCreate>("SELECT * FROM ListOrders WHERE Id = @Id", new { Id = idOrder });
+                }
+            return order;
+        }
     }
 }

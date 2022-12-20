@@ -1,0 +1,104 @@
+﻿@model OrderCreate
+
+<link rel="stylesheet" href="~/css/EditStyle.css" />
+ 
+<div class="form-style">
+    <div class="block">
+        <legend class="Abschnitt">BASIC PROCUREMENT DATA</legend>
+    </div>
+    <div class="table-devide-2">
+        <div class="cells-style">
+            <label asp-for="Title" class="labelPreview"> </label>           
+            <input asp-for="Title" class=inputPreview>
+        </div>
+
+        <div class="cells-style">
+            <label asp-for="Category" class=labelPreview></label>
+            <input asp-for="Category" class=inputPreview>
+        </div>
+        <div class="cells-style">
+            <label asp-for="GoalOfProcurement" class=labelPreview>Goal Of Procurement</label>
+            <input asp-for="GoalOfProcurement" class=inputPreview>
+        </div>
+        <div class="cells-style">
+            <label asp-for="UnitPrice" class=labelPreview>Unit Price</label>
+            <input asp-for="UnitPrice" class=inputPreview>
+        </div>
+
+        <div class="cells-style">
+            <label asp-for="PlaceOfDelivery" class=labelPreview>Place Of Delivery</label>
+            <input asp-for="PlaceOfDelivery" class=inputPreview>
+        </div>
+        <div class="cells-style">
+            <label asp-for="Amount" class=labelPreview></label>
+            <input asp-for="Amount" class=inputPreview>
+        </div>
+
+        <div class="cells-style">
+            <label asp-for="Attachment" class=labelPreview></label>
+            <input asp-for="Attachment" class=inputPreview>
+        </div>
+        <div class="cells-style">
+            <label asp-for="Price" class=labelPreview></label>
+            <input asp-for="Price" class=inputPreview>
+        </div>
+
+        <div class="cells-style">
+            <label asp-for="DesireDate" class=labelPreview>Desire Date</label>
+            <input asp-for="DesireDate" class=inputPreview>
+        </div>
+
+        <div class="cells-style">
+            <label asp-for="PurchasingNotes" class=labelPreview>Purchasing Notes</label>
+            <input asp-for="PurchasingNotes" class=inputPreview>
+        </div>
+    </div>
+
+
+     <div class="block">
+                <legend>RELEASE OF PROCUREMENT REQUEST</legend>
+                </div>
+                <div class="table-devide-2">
+
+                    <div class="cells-style">
+            <label asp-for="CreatedBy" class=labelPreview>Created by</label>
+            <input asp-for="CreatedBy" class=inputPreview>
+        </div>
+
+                    <div class="cells-style">
+            <label asp-for="HeadOfDepartment" class=labelPreview>Head Of Department</label>
+            <input asp-for="HeadOfDepartment" class=inputPreview>
+        </div>
+
+                    <div class="cells-style">
+            <label asp-for="GeneralManager" class=labelPreview>General Manager</label>
+            <input asp-for="GeneralManager" class=inputPreview>
+        </div>
+
+                    <div class="cells-style">
+            <label asp-for="HeadOfIT" class=labelPreview>Head Of IT</label>
+            <input asp-for="HeadOfIT" class=inputPreview>
+                    </div>
+
+                    <div class="cells-style">
+            <label asp-for="WarehouseManager" class=labelPreview>Warehouse Manager</label>
+            <input asp-for="WarehouseManager" class=inputPreview>
+                    </div>
+                </div>
+<br />
+            <div class="block">
+                <legend>PURCHASE</legend>
+            </div>
+            <div class="table-devide-2">
+            <div class="cells-style">
+            <label asp-for="NumberFromERP" class=labelPreview>Number From ERP</label>
+            <input asp-for="NumberFromERP" class=inputPreview>
+        </div>
+            </div>
+
+            <br />
+        <button type="submit" class="btnUniversalFormPreview">Change</button>
+
+ 
+
+</div>

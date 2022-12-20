@@ -1,30 +1,8 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using Approval.Enums
 <link rel="stylesheet" href="~/css/FormStyle.css" />
 @model OrderCreate
  
- 
-    <div>
-    @*@if (User.Identity.IsAuthenticated)
-    {
-        if (User.IsInRole("Admin"))
-        {
-            <a asp-controller="Home" asp-action="AllOrders"><button type="button"  class="btnUniversalFormCreate">Cancel</button></a>
-        }
-        else
-        {
-           <a asp-controller="Home" asp-action="Index"><button type="button"  class="btnUniversalFormCreate">Exit</button></a>
-        }        
-    }*@
-    @*<button type="button" class="btnUniversal">Save</button>*@
-    
-
-    </div>
-@*<div class="submit-message">@ViewData["ValidationMessage"] Test for Test</div>*@
-<div class="form-style">
+<div class="form-style"> 
         <div class="text-danger">@ViewData["ValidationMessage"]</div>
         <form method="post" asp-controller="Home" asp-action="FormCreate">
             <div class="block">
@@ -36,10 +14,19 @@
                     <input asp-for="Title" class=input2>
                     <span asp-validation-for="Title" class="text-danger"></span>                     
                 </div>
+                
+                
+                
                 <div class ="cells-style">
-                    <label asp-for="Category"></label>
-                    <input asp-for="Category" class=input2>
+                <label asp-for="Category" > </label>
+                <div>
+                    <select asp-for="Category" class="dropdownStyle" asp-items="Html.GetEnumSelectList<CategoryEnums>()">
+                        <option value="">Please choose a category</option>
+                    </select>
                 </div>
+                </div>
+                 
+
                 <div class="cells-style">
                     <label asp-for="GoalOfProcurement">Goal Of Procurement</label>
                     <input asp-for="GoalOfProcurement" class=input2>
@@ -51,8 +38,13 @@
 
             <div class="cells-style">
                 <label asp-for="PlaceOfDelivery">Place Of Delivery</label>
-                    <input asp-for="PlaceOfDelivery" class=input2>
+                <div>
+                    <select asp-for="PlaceOfDelivery" class="dropdownStyle" asp-items="Html.GetEnumSelectList<DeliveryEnum>()">
+                        <option value="">Please choose a city</option>
+                    </select>
                 </div>
+            </div>
+
             <div class="cells-style">
                     <label asp-for="Amount"></label>
                     <input asp-for="Amount" class=input2>
@@ -102,6 +94,11 @@
                     <div class="cells-style">
                     <label asp-for="HeadOfIT">Head Of IT</label>
                     <input asp-for="HeadOfIT" class=input2>
+                    </div>
+
+                    <div class="cells-style">
+                <label asp-for="WarehouseManager">Warehouse Manager</label>
+                <input asp-for="WarehouseManager" class=input2>
                     </div>
                 </div>
 <br />
