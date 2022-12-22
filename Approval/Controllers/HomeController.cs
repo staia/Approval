@@ -4,15 +4,16 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Claims;
-
 
 namespace Approval.Controllers
 {
@@ -46,8 +47,7 @@ namespace Approval.Controllers
         {
             return View();
             void Hide_Click(Object Sender, EventArgs e)
-            {
-                
+            {                
             }
         }
 
@@ -64,7 +64,6 @@ namespace Approval.Controllers
                     return View();
                 }
                 return View(orderCreate);
-
             }
             ViewData["ValidationMessage"] = "Data is not required";
             return View(orderCreate);
@@ -86,7 +85,6 @@ namespace Approval.Controllers
                 }
             }
             else ViewData["ValidationMessage"] = "Not ";
-
             return View();
         }
 
@@ -140,11 +138,7 @@ namespace Approval.Controllers
         {
             return View();
         }
-
-        public IActionResult Preview()
-        {
-            return View();
-        }
+         
 
         public IActionResult Edit(int idRequest)
         {
@@ -158,20 +152,23 @@ namespace Approval.Controllers
             var order = OrderServices.GetOrder(idRequest, Conneсt);      
             return View("Preview", order);
         }
-
-        //[HttpGet]
-        //public IActionResult Change(int id)
-        //{
-        //    return View();
-        //}
-
-        [HttpPost]
-        public IActionResult Change(int idRequest, string data)
+         
+        public IActionResult Preview(int idRequest, string data)
         {
             var order = OrderServices.GetOrder(idRequest, Conneсt);
             return View("Preview", order);
+                                //List<SelectListItem> source = new List<SelectListItem>
+                                //{
+                                //    new SelectListItem("Order", "value"),
+                                //    new SelectListItem("Order1", "value1"),
+                                //    new SelectListItem("Order2", "value2")
+                                //};
+                                //var model = new SelectListModel()
+                                //{
+                                //    SelectedValue = source[2].Value,
+                                //    Options = source
+                                //};
         }
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
