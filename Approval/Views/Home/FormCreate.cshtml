@@ -12,43 +12,43 @@
                 <div class="cells-style">
                     <label asp-for="Title"> </label>                    
                     <input asp-for="Title" class=input2>
-                    <span asp-validation-for="Title" class="text-danger"></span>                     
-                </div>
-                
-                
+                <b><span asp-validation-for="Title" class="text-danger"></span></b>
+            </div>
                 
                 <div class ="cells-style">
-                <label asp-for="Category" > </label>
-                <div>
+                <label asp-for="Category" > </label>                
                     <select asp-for="Category" class="dropdownStyle" asp-items="Html.GetEnumSelectList<CategoryEnums>()">
                         <option value="">Please choose a category</option>
                     </select>
+                    <b><span asp-validation-for="Category" class="text-danger"></span></b>               
                 </div>
-                </div>
-                 
 
                 <div class="cells-style">
                     <label asp-for="GoalOfProcurement">Goal Of Procurement</label>
                     <input asp-for="GoalOfProcurement" class=input2>
                 </div>
-            <div class="cells-style">
+
+                <div class="cells-style">
                     <label asp-for="UnitPrice">Unit Price</label>
-                    <input asp-for="UnitPrice" class=input2> 
+                    <input asp-for="UnitPrice" class=input2>
+                <b><span asp-validation-for="UnitPrice" class="text-danger"></span></b>
                 </div>
 
-            <div class="cells-style">
+                <div class="cells-style">
                 <label asp-for="PlaceOfDelivery">Place Of Delivery</label>
                 <div>
                     <select asp-for="PlaceOfDelivery" class="dropdownStyle" asp-items="Html.GetEnumSelectList<DeliveryEnum>()">
                         <option value="">Please choose a city</option>
                     </select>
+                    <b><span asp-validation-for="PlaceOfDelivery" class="text-danger"></span></b>
                 </div>
             </div>
 
             <div class="cells-style">
                     <label asp-for="Amount"></label>
                     <input asp-for="Amount" class=input2>
-                </div>
+                <b><span asp-validation-for="Amount" class="text-danger"></span></b>
+            </div>
 
             <div class="cells-style">
                 <label asp-for="Attachment"></label>  
@@ -57,8 +57,8 @@
                 <div class="cells-style">
                     <label asp-for="Price"></label>
                     <input asp-for ="Price" class=input2>
-                <span asp-validation-for="Price" class="text-danger"></span>
-                </div>
+                <b><span asp-validation-for="Price" class="text-danger"></span> </b>
+            </div>
 
                 <div class="cells-style">
                 <label asp-for="DesireDate">Desire Date</label>

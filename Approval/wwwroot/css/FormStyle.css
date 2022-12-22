@@ -4,6 +4,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    backdrop-filter: blur(2px);  
 }
 
 .btnUniversalFormCreate {
@@ -104,14 +105,14 @@
         font-weight: 700;
     }
 
-.table-devide-22 {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    border: 1px solid #000000;
-}
+    .table-devide-22 {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        border: 1px solid #000000;
+    }
     .table-devide-22 input {
-        width: 55%;
+        width: 51%;
         padding: 3px;
         font-size: 15px; 
         border-radius: 10px;
@@ -119,7 +120,7 @@
         font-weight: 500;
     }
     .table-devide-22 label {
-        width: 30%;
+        width: 28%;
         padding: 3px;
         font-size: 16px;
         font-weight: 700;
@@ -129,14 +130,14 @@
         padding: 2%;
     }
 
-.inputPreview {
-    font-size: 15px;
-    border: none;
-    outline: none;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 20px;
+    .inputPreview {
+        font-size: 15px;
+        border: none;
+        outline: none;
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 20px;
      
-}
+    }
 
     .inputPreviewEdit {
         font-size: 15px;
@@ -170,6 +171,7 @@
         position: relative;
         left: 6em;
         text-align: center;
+        
     }
 
     .btnUniversalAllOrders {
@@ -225,15 +227,20 @@
         border: 1px solid #0E3386;
         border-radius: 20px;
         outline: none;
-        height:30px;
+        height:40px;
         width:520px;
     }
 
     input {
-        font-size: 30px;
-        border: 3px solid #0E3386;
+        /*font-size: 25 25 95 85;*/
+        /*font-weight: 50vw;*/
+        border: 2px solid #0E3386;
         border-radius: 15px;
         outline: none;
+        height:45px;
+        width:650px;
+        position: center;
+        margin-right: 100px;
     }
 
     tr {
@@ -241,11 +248,12 @@
         color: black;
     }
 
-    .table {
-        top: 1em;
-        left: 10em;
-        border: none;
-    }
+.table {
+    top: 1em;
+    left: 10em;
+    /*border: 1px solid #0E3386;*/
+    margin-top: 40px;
+}
 
     .table thead th {
         font-weight: bold;
@@ -268,7 +276,7 @@
     .table tbody td {
         text-align: left;
         border: none;
-        padding: 10px 15px;
+        padding: 8px 26px;
         font-size: 14px;
         vertical-align: top;
     }
