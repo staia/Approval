@@ -8,7 +8,7 @@
 
 @if(User.Identity.IsAuthenticated)
 {
-    <p>Вы авторизованны</p>
+    <p>Вы авторизован</p>
     <p>@ViewData["ValidationMessage"]</p>
 @*
     @if(User.IsInRole("Admin"))
@@ -19,7 +19,7 @@
     {
         <p></p>
     }*@
-    <a asp-controller="Home" asp-action="SignOut">123321</a>
+    <a asp-controller="Home" asp-action="SignOut">Exit</a>
 }
 else
 {
@@ -38,23 +38,32 @@ else
                     <label for="username">Username</label>
                     <input asp-for="UserName" class="form-styling" type="text" name="UserName" placeholder="" />
 
-                    <label for="role">Role</label>
-                    <input asp-for="Role" class="form-styling" type="text" name="Role" placeholder="" />
+                    <label for="password">EnterPassword</label>
+                    <input asp-for="EnterPassword" class="form-styling" type="text" name="EnterPassword" placeholder="" />
 
-                    <input type="checkbox" id="checkbox" />
-                    <label for="checkbox"><span class="ui"></span>Keep me signed in</label>
+                  @*  <input type="checkbox" id="GoogleIn" />
+                <button type="submit" class="but-google">Login with Google </button>*@
+                    <div for="GoogleIn" class="but-google"><a href="https://google.com">Login with Google</a></div>
+
+                   @* <input type="checkbox" id="checkbox" />
+                    <label for="checkbox"><span class="ui"></span>Keep me signed in</label>*@
+
                     <div class="btn-animate">
                         <button type="submit" class="btn-signin">Sign in</button>
                     </div>
                 </form>
 
-                <form class="form-signup" asp-controller="Home" asp-action="Register" name="form">
+                <form class="form-signup" asp-controller="Home" asp-action="UserModelRegister" name="form">
+
+                    <label for="username">Username</label>
+                    <input asp-for="UserName" class="form-styling" type="text" name="UserName" placeholder="" />
 
                     <label for="email">Email</label>
                     <input asp-for="Email" class="form-styling" type="text" name="Email" placeholder="" />
 
                     <label for="password">EnterPassword</label>
                     <input asp-for="EnterPassword" class="form-styling" type="text" name="EnterPassword" placeholder="" />
+
 
                         <button type="submit" class="btn-signup">Sign Up</button>
                 </form>

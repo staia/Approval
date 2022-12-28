@@ -13,14 +13,14 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Claims;
-
+using System.Threading.Tasks;
 
 namespace Approval.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration _configuration;         // считыванье с файла
 
         public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
@@ -34,9 +34,6 @@ namespace Approval.Controllers
                 return new SqlConnection(_configuration.GetConnectionString("Remote"));
             }
         }
-
-
-
 
 
 
@@ -89,63 +86,43 @@ namespace Approval.Controllers
                 {
                     ViewData["ValidationMessage"] = "Autorize Admin";
                 }
-                else
+                else if(User.IsInRole("User"))
                 {
                     ViewData["ValidationMessage"] = "Autorize User";
+                }
+                else
+                {
+                    ViewData["ValidationMessage"] = "Autorize Purchase";     
                 }
             }
             else ViewData["ValidationMessage"] = "Not ";
 
             return View();
         }
-        [HttpPost]
-
-        public IActionResult Scan<UserModel>(AutorizeUserModel userscan, IDbConnection connectUser)
-        {
-
-            using (IDbConnection database = connectUser)
-            {
-               var sc = database.QuerySingle("SELECT * FROM UserData WHERE Email = @Email, EnterPassword = @EnterPassword ", userscan);
-                if(sc == null)
-                {
-                    database.Add
-                }
-               
-            }
-            ViewData["ValidationMessage"] = "Repit user";
-            return View("Index", userscan);
-
-        }
-
 
         [HttpPost]   
-        public IActionResult Autorize(RegisterAtUserModel userdata)
+        public async Task<IActionResult> Autorize(AutorizeUserModel userdata)
         {
             if (ModelState.IsValid)
             {
-                //var responce = userdata.Autorize(Conneсt);
-                //if(responce.Status = Models.StatusCode.Ok)
-                //{
-                //}
 
-                var res = userdata.UserModelRegister(Conneсt);
+                var res = await userdata.AutorizeAsync(Conneсt);
                 ViewData["ValidationMessage"] = res.ErrorMessage;
                 if (res.Status == Models.StatusCode.Ok)
                 {
-                    // ModelState.Clear();                                   //очистеть после заполнения
-                    // return View();
-                    AvtotizeUser(res.Data);
+ 
+                    await AvtotizeUser(res.Data);
                     return RedirectToAction("Index");
                 }
-                return View("Index", userdata);
+                return View("Index");
             }
             ViewData["ValidationMessage"] = "Data is not required";
-            return View("Index", userdata);
+            return View("Index");
         }
 
-        void AvtotizeUser(RegisterAtUserModel userdata)
+        async Task AvtotizeUser(RegisterAtUserModel userdata)
         {
-            List<Claim> claims = new List<Claim>()                 // личность на сервери 
+            List<Claim> claims = new List<Claim>()                
             {
                  new Claim(ClaimTypes.Hash, userdata.IdUser.ToString()),
                  new Claim(ClaimTypes.Role, userdata.Role),          
@@ -154,7 +131,7 @@ namespace Approval.Controllers
             }; 
             ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Hash, ClaimTypes.Role);
             ClaimsPrincipal avtorizeHead = new ClaimsPrincipal(identity);
-            HttpContext.SignInAsync(avtorizeHead);
+            await HttpContext.SignInAsync(avtorizeHead);
         }
 
         public ActionResult SignOut()                              //   != авторизация
