@@ -3,17 +3,23 @@ using Approval.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.DataProtection.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Protocols;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Approval.Controllers
 {
@@ -36,12 +42,53 @@ namespace Approval.Controllers
             }
         }
 
+
+
+        //private readonly PageData _context;
+
+        //public HomeController(PageData context)
+        //{
+        //    _context = context;
+        //}
+        //public async Task<IActionResult> AllOrders(string searchString)
+        //{
+        //    if (_context.ListOrders == null)
+        //    {
+        //        return Problem("Entity set 'PageData.Item' is null.");
+        //    }
+
+        //    var items = from m in _context.ListOrders select m;      // создает запрос LINQ для выбора items
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        items = items.Where(s => s.Title!.Contains(searchString));   //Метод Contains выполняется в базе данных, а не в коде C#
+        //    }
+        //    return View();
+        //    //return View(await items.ToListAsync());
+        //}
+
         [Authorize(Roles ="Admin")]
         public IActionResult AllOrders()
         {
             PageData AllOrdersTable = new PageData(Conneсt);
             return View(AllOrdersTable);
         }
+
+        //[Authorize(  Roles = "Purchase")]
+        //public IActionResult AllOrders()
+        //{
+        //    PageData AllOrdersTable = new PageData(Conneсt);
+        //    return View(AllOrdersTable);
+        //}
+
+
+
+        //[HttpGet]
+        //public async Task<IActionResult> AllOrders(string Empsearch)
+        //{
+        //    ViewData["GetEmployeedetails"] = Empsearch;
+        //    var empquery = from x in Conneсt.Orders select x;
+        //}
 
         public IActionResult FormCreate()
         {
@@ -52,7 +99,7 @@ namespace Approval.Controllers
         }
 
         [HttpPost]
-        public IActionResult FormCreate(OrderCreate orderCreate)
+        public IActionResult FormCreate(ListOrder orderCreate)
         {
             if (ModelState.IsValid)
             {
@@ -115,8 +162,7 @@ namespace Approval.Controllers
             {
                  new Claim(ClaimTypes.Hash, userdata.IdUser.ToString()),
                  new Claim(ClaimTypes.Role, userdata.Role),          
-                 new Claim(ClaimTypes.Email, userdata.Email),          
-                
+                 new Claim(ClaimTypes.Email, userdata.Email),                          
             }; 
             ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Hash, ClaimTypes.Role);
             ClaimsPrincipal avtorizeHead = new ClaimsPrincipal(identity);
@@ -138,7 +184,10 @@ namespace Approval.Controllers
         {
             return View();
         }
-         
+        public IActionResult Saved()
+        {
+            return View();
+        }
 
         public IActionResult Edit(int idRequest)
         {
@@ -146,28 +195,17 @@ namespace Approval.Controllers
             return View(order);
         }
 
-        [HttpPost]
-        public IActionResult Delete(int idRequest, string data)
+        public ActionResult Delete(int idRequest)
         {
-            var order = OrderServices.GetOrder(idRequest, Conneсt);      
-            return View("Preview", order);
+            ListOrder orders = new ListOrder();
+            orders.DeleteItem(idRequest, Conneсt);
+            return RedirectToAction("AllOrders");
         }
-         
+
         public IActionResult Preview(int idRequest, string data)
         {
             var order = OrderServices.GetOrder(idRequest, Conneсt);
             return View("Preview", order);
-                                //List<SelectListItem> source = new List<SelectListItem>
-                                //{
-                                //    new SelectListItem("Order", "value"),
-                                //    new SelectListItem("Order1", "value1"),
-                                //    new SelectListItem("Order2", "value2")
-                                //};
-                                //var model = new SelectListModel()
-                                //{
-                                //    SelectedValue = source[2].Value,
-                                //    Options = source
-                                //};
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -176,5 +214,7 @@ namespace Approval.Controllers
             throw new Exception();
             // return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+         
     }
 }

@@ -26,17 +26,6 @@ namespace Approval.Models
 
             return baseResponce;
 
-            //RegisterAtUserModel avtoUser;
-            //using (IDbConnection database = connect)
-            //{
-            //    avtoUser = database.QuerySingle<RegisterAtUserModel>("SELECT * FROM Avtorize WHERE UserName = @UserName AND Email = @Email AND EnterPassword = @Password AND [Role] = @Role AND ConfirmPassword = @ConfirmPassword ", userdata);
-            //}
-            //if (avtoUser == null)
-            //{
-            //    baseResponce.Status = StatusCode.NotFound;
-            //    baseResponce.ErrorMessege = "Нет такого пользователя";
-            //}
-            //  return baseResponce;
         }
     }
 }

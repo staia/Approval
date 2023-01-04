@@ -1,6 +1,6 @@
 ﻿@using Approval.Enums
 <link rel="stylesheet" href="~/css/FormStyle.css" />
-@model OrderCreate
+@model ListOrder
  
 <div class="form-style"> 
         <div class="text-danger">@ViewData["ValidationMessage"]</div>
@@ -100,20 +100,27 @@
                 <label asp-for="WarehouseManager">Warehouse Manager</label>
                 <input asp-for="WarehouseManager" class=input2>
                     </div>
-                </div>
-<br />
-            <div class="block">
-                <legend>PURCHASE</legend>
-            </div>
-            <div class="table-devide-2">
-            <div class="cells-style">
-                <label asp-for="NumberFromERP">Number From ERP</label>
-                <input asp-for="NumberFromERP" class=input2>                   
-                </div>
-            </div>
+                </div><br />
+
+
+                <div class="block">
+                @if (User.IsInRole("Purchase"))
+                {
+                  <legend>PURCHASE</legend>             
+                     <div class="table-devide-2">
+                     <div class="cells-style">
+                         <label asp-for="NumberFromERP">Number From ERP</label>
+                         <input asp-for="NumberFromERP" class=input2>                   
+                     </div>
+                 </div>
+                }
+                else
+                {           
+                }    
 
             <br />
-        <button type="submit" class="btnUniversalFormCreate">Save</button>
+            <button type="submit" class="btnUniversalFormCreate" asp-action="Saved">Save</button>
+        
         </form>
 </div>
  

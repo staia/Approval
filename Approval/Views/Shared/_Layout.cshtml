@@ -40,17 +40,21 @@
                     </ul>
                 </div>
                  @if (User.Identity.IsAuthenticated)
-        {
-        if (User.IsInRole("Admin"))
-            {
-                <a asp-controller="Home" asp-action="AllOrders"><button type="button"  class="btnUniversalAllOrders">All Requests</button></a>
-            }
-        else
-            {
-               <a asp-controller="Home" asp-action="Index"><button type="button"  class="btnUniversalAllOrders">Cancel</button></a>
-            }        
-        }
-            </div>
+                    {
+                    if (User.IsInRole("Admin"))
+                        {
+                            <a asp-controller="Home" asp-action="AllOrders"><button type="button"  class="btnUniversalAllOrders">All Requests</button></a>
+                        }
+                    else if (User.IsInRole("Purchase"))
+                    {
+                        <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnUniversalAllOrders">All Requests</button></a>
+                    }
+                    else
+                        {
+                           <a asp-controller="Home" asp-action="Index"><button type="button"  class="btnUniversalAllOrders">Cancel</button></a>
+                        }        
+                    }
+                </div>
             
             
     <a asp-controller="Home" asp-action="SignOut" ><button type="button"  class="btnUniversalAllOrders">Sign Out</button></a>

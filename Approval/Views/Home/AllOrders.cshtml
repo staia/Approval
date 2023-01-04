@@ -5,6 +5,14 @@
 {
     if(User.IsInRole("Admin"))
     {
+       @* <form asp-controller="Movies" asp-action="Index">
+            <p>
+                Search: <input type="text" name="SearchString" />
+                <input type="submit" value="Filter" />
+            </p>
+        </form>
+*@
+
         <div class="search">
             <input />
             <a asp-controller="Home" asp-action="FormCreate"><button type="button" class="btnUniversalAllOrders">Create</button></a>
@@ -17,30 +25,39 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Title</th>
+                        <th width="900">Title</th>
                         <th>Price</th>
-                        <th>Status</th>
-                        <th>Created</th>
-                        <th>Created by</th>
+                        <th >Status</th>
+                        <th width="950">Created</th>
+                        <th width="500">Created by</th>
                         <th>Category</th>
-                        <th>Number from ERP</th>
-                        <th>Change</th>
+                        <th width="600">Number from ERP</th>
+                        <th> </th>
+                        <th> </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var row in Model.ListOrders)
                     {
                         <tr>
-                            <td>@row.ID</td>
-                            <td><a asp-action="Preview" asp-controller="Home" asp-route-idRequest="@row.ID">@row.Title</a></td>
+                            <td >@row.ID</td>
+                            <td text-align: left;><a asp-action="Preview" asp-controller="Home" asp-route-idRequest="@row.ID">@row.Title</a></td>
                             <td>@string.Format("${0:N2}", row.Price)</td>
                             <td>@row.Status</td>
-                            <td>@row.Created</td>
+                            <td>@row.Created </td>
                             <td>@row.CreatedBy</td>
                             <td>@row.Category</td>
                             <td>@row.NumberFromERP</td>
-                            <td><a asp-action="Edit" asp-controller="Home" asp-route-idRequest="@row.ID">Edit</a></td>
+                            <td><a asp-action="Edit" asp-controller="Home" asp-route-idRequest="@row.ID"><img src="@Url.Content("~/images/edit.png")" /></a></td>
+                            @*<td><a asp-action="Delete" asp-controller="Home" asp-route-idRequest="@row.ID" method="post">Delete</a></td>*@
+
+                            @*<td><a name="X-HTTP-Method-Override" asp-controller="Home" value="DELETE" formnovalidate onclick="return confirm('Do you want to delete Order with ID = @row.ID ?')">Delete</a></td>*@
+                            <td>
+                                <a asp-controller="Home" asp-action="Delete" type=”submit” asp-route-idRequest="@row.ID" class="btnDelete"
+                                formnovalidate onclick="return confirm('Do you want to delete Order with ID = @row.ID ?')"><img src="@Url.Content("~/images/delete.png")" /></a></td>
                         </tr>
+                        
+                        
                     }
                 </tbody>
             </table>

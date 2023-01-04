@@ -1,4 +1,4 @@
-﻿@model OrderCreate
+﻿@model ListOrder
 
 <link rel="stylesheet" href="~/css/FormStyle.css"/>
  
@@ -100,5 +100,6 @@
     </form>    
 </div>
 
-<a asp-controller="Home" asp-action="Preview"><button type="button" class="btnUniversalFormCreate" onclick="window.print()">Print</button></a>
-<a asp-controller="Home" asp-action="Edit"><button type="submit" class="btnUniversalFormCreate">Change</button></a>
+@*<a asp-controller="Home" asp-action="Preview"><button type="button" class="btnUniversalFormCreate" target="_blank" onclick="window.print()">Print</button></a>*@
+<button type="button" class="btnUniversalFormCreate" onclick="window.print()" target="_blank">Print</button>
+<a asp-controller="Home" asp-action="Edit"><button type="button" class="btnUniversalFormCreate">Change</button></a>

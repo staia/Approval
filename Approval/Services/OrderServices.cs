@@ -1,12 +1,14 @@
 ﻿using Approval.Models;
 using Dapper;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Approval.Services
 {
     public static class OrderServices
     {
-        public static BaseResponce<bool> CreateOrder(this OrderCreate order, IDbConnection connect)
+        public static BaseResponce<bool> CreateOrder(this ListOrder order, IDbConnection connect)
         {
             BaseResponce<bool> responce = new BaseResponce<bool>();
             responce.Status = StatusCode.Ok;
@@ -31,14 +33,15 @@ namespace Approval.Services
              return responce;
         }
 
-        public static OrderCreate GetOrder(int idOrder, IDbConnection connect)
-        { 
-            OrderCreate order = new OrderCreate();
+        public static ListOrder GetOrder(int idOrder, IDbConnection connect)
+        {
+            ListOrder order = new ListOrder();
                 using (IDbConnection database = connect)
                 {                    
-                    order= database.QueryFirstOrDefault<OrderCreate>("SELECT * FROM ListOrders WHERE Id = @Id", new { Id = idOrder });
+                    order= database.QueryFirstOrDefault<ListOrder>("SELECT * FROM ListOrders WHERE Id = @Id", new { Id = idOrder });
                 }
             return order;
         }
+        
     }
 }

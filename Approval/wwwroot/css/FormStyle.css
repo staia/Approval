@@ -68,6 +68,7 @@
     margin-bottom: 25px;
 }
 
+
     .input-validation-error{
         background:rgba(145,45,45,0.5);
         color:#fff;
@@ -174,62 +175,65 @@
         
     }
 
-    .btnUniversalAllOrders {
-        align-items: center;
-        appearance: none;
-        background-color: #FCFCFD;
-        border-radius: 4px;
-        border-width: 0;
-        box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
-        box-sizing: border-box;
-        color: #36395A;
-        cursor: pointer;
-        display: inline-flex;
-        font-family: "JetBrains Mono",monospace;
-        height: 40px;
-        justify-content: center;
-        line-height: 1;
-        list-style: none;
-        overflow: hidden;
-        padding-left: 16px;
+.btnUniversalAllOrders {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 3px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 40px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+       padding-left: 16px;
         padding-right: 16px;
-        position: relative;
-        text-align: left;
-        text-decoration: none;
-        transition: box-shadow .15s,transform .15s;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        white-space: nowrap;
-        will-change: box-shadow,transform;
-        font-size: 18px;
-        outline: none;
-    }
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+    outline: none;
+}
 
     .btnUniversalAllOrders:focus {
         box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
         outline: none;
     }
 
-    .btnUniversalAllOrders:hover {
-        box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-        transform: translateY(-2px);
-        outline: none;
-    }
+        .btnUniversalAllOrders:hover {
+            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            transform: translateY(-2px);
+            outline: none;
+        }
 
-    .btnUniversalAllOrders:active {
-        box-shadow: #D6D6E7 0 3px 7px inset;
-        transform: translateY(2px);
-    }
+        .btnUniversalAllOrders:active {
+            box-shadow: #D6D6E7 0 3px 7px inset;
+            transform: translateY(2px);
+        }
 
-    .dropdownStyle {
-        font-size: 15px;
-        border: 1px solid #0E3386;
-        border-radius: 20px;
-        outline: none;
-        height:40px;
-        width:520px;
-    }
+ 
+ 
+
+.dropdownStyle {
+    font-size: 15px;
+    border: 1px solid #0E3386;
+    border-radius: 20px;
+    outline: none;
+    height: 40px;
+    width: 520px;
+}
 
     input {
         /*font-size: 25 25 95 85;*/
@@ -250,14 +254,14 @@
 
 .table {
     top: 1em;
-    left: 10em;
+    left: 1em;
     /*border: 1px solid #0E3386;*/
-    margin-top: 40px;
+    margin-top: 40px; 
 }
 
     .table thead th {
         font-weight: bold;
-        text-align: left;
+        text-align: center;
         border: none;
         padding: 10px 15px;
         background: #002D62;
@@ -273,8 +277,14 @@
         border-radius: 0 8px 8px 0;
     }
 
+.EditDelete {
+    background:none;
+    border: none;
+    background-color:red;
+}
+
     .table tbody td {
-        text-align: left;
+        text-align: center;
         border: none;
         padding: 8px 26px;
         font-size: 14px;
