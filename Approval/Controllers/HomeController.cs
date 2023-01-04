@@ -76,74 +76,7 @@ namespace Approval.Controllers
 
 
 
-        public IActionResult Index()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                var user = User.Identities.First().Claims.ToList();
 
-                if (User.IsInRole("Admin"))
-                {
-                    ViewData["ValidationMessage"] = "Autorize Admin";
-                }
-                else if(User.IsInRole("User"))
-                {
-                    ViewData["ValidationMessage"] = "Autorize User";
-                }
-                else
-                {
-                    ViewData["ValidationMessage"] = "Autorize Purchase";     
-                }
-            }
-            else ViewData["ValidationMessage"] = "Not ";
-
-            return View();
-        }
-
-        [HttpPost]   
-        public async Task<IActionResult> Autorize(AutorizeUserModel userdata)
-        {
-            if (ModelState.IsValid)
-            {
-
-                var res = await userdata.AutorizeAsync(Conneсt);
-                ViewData["ValidationMessage"] = res.ErrorMessage;
-                if (res.Status == Models.StatusCode.Ok)
-                {
- 
-                    await AvtotizeUser(res.Data);
-                    return RedirectToAction("Index");
-                }
-                return View("Index");
-            }
-            ViewData["ValidationMessage"] = "Data is not required";
-            return View("Index");
-        }
-
-        async Task AvtotizeUser(RegisterAtUserModel userdata)
-        {
-            List<Claim> claims = new List<Claim>()                
-            {
-                 new Claim(ClaimTypes.Hash, userdata.IdUser.ToString()),
-                 new Claim(ClaimTypes.Role, userdata.Role),          
-                 new Claim(ClaimTypes.Email, userdata.Email),          
-                
-            }; 
-            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Hash, ClaimTypes.Role);
-            ClaimsPrincipal avtorizeHead = new ClaimsPrincipal(identity);
-            await HttpContext.SignInAsync(avtorizeHead);
-        }
-
-        public ActionResult SignOut()                              //   != авторизация
-        {
-            HttpContext.SignOutAsync();
-            return RedirectToAction("Index");
-        }
-        [Authorize]  //(Role = "Admin")
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
 
 
