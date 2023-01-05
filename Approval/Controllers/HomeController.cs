@@ -50,22 +50,17 @@ namespace Approval.Controllers
         //{
         //    _context = context;
         //}
-        //public async Task<IActionResult> AllOrders(string searchString)
-        //{
-        //    if (_context.ListOrders == null)
-        //    {
-        //        return Problem("Entity set 'PageData.Item' is null.");
-        //    }
-
-        //    var items = from m in _context.ListOrders select m;      // создает запрос LINQ для выбора items
-
-        //    if (!String.IsNullOrEmpty(searchString))
-        //    {
-        //        items = items.Where(s => s.Title!.Contains(searchString));   //Метод Contains выполняется в базе данных, а не в коде C#
-        //    }
-        //    return View();
-        //    //return View(await items.ToListAsync());
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Search(string searchString)
+        {
+            var result = OrderServices.Search(searchString, Conneсt);
+            PageData data = new PageData()
+            {
+                ListOrders = result
+            };
+            return View("AllOrders", data);
+            //return View(await items.ToListAsync());
+        }
 
         [Authorize(Roles ="Admin")]
         public IActionResult AllOrders()

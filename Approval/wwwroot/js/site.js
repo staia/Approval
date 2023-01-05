@@ -36,3 +36,16 @@ $(function () {
         $(".forgot").toggleClass("forgot-fade");
     });
 });
+
+
+
+$(".search input").on("keyup", function () {
+    var text = $(this).val();
+    if (text.length == 0) {
+        $(".table tbody tr").show();
+    }
+    else {
+        $(".table tbody tr").show();
+        $(".table tbody tr:not(:contains('" + text + "'))").hide();
+    }
+})

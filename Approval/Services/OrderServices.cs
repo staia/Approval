@@ -1,8 +1,10 @@
 ﻿using Approval.Models;
 using Dapper;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Approval.Services
 {
@@ -28,20 +30,31 @@ namespace Approval.Services
             catch (System.Exception ex)
             {
                 responce.Status = StatusCode.Error;
-                responce.ErrorMessage = ex.Message ;
+                responce.ErrorMessage = ex.Message;
             }
-             return responce;
+            return responce;
         }
 
         public static ListOrder GetOrder(int idOrder, IDbConnection connect)
         {
             ListOrder order = new ListOrder();
-                using (IDbConnection database = connect)
-                {                    
-                    order= database.QueryFirstOrDefault<ListOrder>("SELECT * FROM ListOrders WHERE Id = @Id", new { Id = idOrder });
-                }
+            using (IDbConnection database = connect)
+            {
+                order = database.QueryFirstOrDefault<ListOrder>("SELECT * FROM ListOrders WHERE Id = @Id", new { Id = idOrder });
+            }
             return order;
         }
-        
+
+        public static List<ListOrder> Search(string find, IDbConnection connect, string category = "all", string role = "user")
+        {
+            List<ListOrder> result = new List<ListOrder>();
+            using(IDbConnection database = connect)
+            {
+                result= database.Query<ListOrder>("SELECT * FROM ListOrders " +
+                    "WHERE Title LIKE @Search", new { Search = find + "%"}).ToList();
+            }
+            return result;
+        }
+    
     }
 }

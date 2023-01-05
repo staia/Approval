@@ -13,12 +13,13 @@
         </form>
 *@
 
-        <div class="search">
-            <input />
+        <form method="post" asp-controller="Home" asp-action="Search" class="search">
+            <input name="searchString"/>
+            @*<button type="submit">send</button>*@
             <a asp-controller="Home" asp-action="FormCreate"><button type="button" class="btnUniversalAllOrders">Create</button></a>
 
             @*<button type="button" class="btnUniversalAllOrders" action="Hide_Click">All Requests</button>*@
-        </div>
+        </form>
 
         <div class="table">
             <table>

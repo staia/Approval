@@ -10,6 +10,10 @@ namespace Approval.Models
     public class PageData
     {
         public List<ListOrder> ListOrders { get; set; }
+        public PageData()
+        {
+
+        }
         public PageData(IDbConnection connect)
         {
             ListOrders = new List<ListOrder>();
