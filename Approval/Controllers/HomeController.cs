@@ -26,65 +26,34 @@ namespace Approval.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IConfiguration _configuration;
+        private readonly OrderServices _order;
+        //private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger, 
-                                IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, OrderServices order)
         {
             _logger = logger;
-            _configuration = configuration;  
+            _order = order;
         }
-        public IDbConnection Conneсt
-        {
-            get
-            {
-                return new SqlConnection(_configuration.GetConnectionString("Remote"));
-            }
-        }
+       
 
-
-
-        //private readonly PageData _context;
-
-        //public HomeController(PageData context)
-        //{
-        //    _context = context;
-        //}
         [HttpPost]
         public async Task<IActionResult> Search(string searchString)
         {
-            var result = OrderServices.Search(searchString, Conneсt);
+            var result = _order.Search(searchString);
             PageData data = new PageData()
             {
                 ListOrders = result
             };
-            return View("AllOrders", data);
-            //return View(await items.ToListAsync());
+            return View("AllOrders", data);           
         }
 
-        [Authorize(Roles ="Admin")]
-        public IActionResult AllOrders()
-        {
-            PageData AllOrdersTable = new PageData(Conneсt);
-            return View(AllOrdersTable);
+        //[Authorize(Roles ="Admin")]
+        public IActionResult AllOrders([FromServices] PageData page)
+        {            
+            return View(page);
         }
 
-        //[Authorize(  Roles = "Purchase")]
-        //public IActionResult AllOrders()
-        //{
-        //    PageData AllOrdersTable = new PageData(Conneсt);
-        //    return View(AllOrdersTable);
-        //}
-
-
-
-        //[HttpGet]
-        //public async Task<IActionResult> AllOrders(string Empsearch)
-        //{
-        //    ViewData["GetEmployeedetails"] = Empsearch;
-        //    var empquery = from x in Conneсt.Orders select x;
-        //}
-
+  
         public IActionResult FormCreate()
         {
             return View();
@@ -98,7 +67,7 @@ namespace Approval.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = orderCreate.CreateOrder(Conneсt);
+                var result = _order.CreateOrder(orderCreate);
                 ViewData["ValidationMessage"] = result.ErrorMessage;
                 if (result.Status == Models.StatusCode.Ok)
                 {
@@ -131,17 +100,15 @@ namespace Approval.Controllers
         }
 
 
-        [HttpPost]   
+        [HttpPost]
         public IActionResult Autorize(RegisterAtUserModel userdata)
         {
             if (ModelState.IsValid)
-            { 
+            {
                 var res = userdata.UserModelRegister(Conneсt);
                 ViewData["ValidationMessage"] = res.ErrorMessage;
                 if (res.Status == Models.StatusCode.Ok)
                 {
-                    // ModelState.Clear();                                   //очистеть после заполнения
-                    // return View();
                     AvtotizeUser(res.Data);
                     return RedirectToAction("Index");
                 }
@@ -153,18 +120,18 @@ namespace Approval.Controllers
 
         void AvtotizeUser(RegisterAtUserModel userdata)
         {
-            List<Claim> claims = new List<Claim>()                 // личность на сервери 
+            List<Claim> claims = new List<Claim>()
             {
                  new Claim(ClaimTypes.Hash, userdata.IdUser.ToString()),
-                 new Claim(ClaimTypes.Role, userdata.Role),          
-                 new Claim(ClaimTypes.Email, userdata.Email),                          
-            }; 
+                 new Claim(ClaimTypes.Role, userdata.Role),
+                 new Claim(ClaimTypes.Email, userdata.Email),
+            };
             ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Hash, ClaimTypes.Role);
             ClaimsPrincipal avtorizeHead = new ClaimsPrincipal(identity);
             HttpContext.SignInAsync(avtorizeHead);
         }
 
-        public ActionResult SignOut()                              //   != авторизация
+        public ActionResult SignOut()
         {
             HttpContext.SignOutAsync();
             return RedirectToAction("Index");
@@ -202,6 +169,17 @@ namespace Approval.Controllers
             var order = OrderServices.GetOrder(idRequest, Conneсt);
             return View("Preview", order);
         }
+
+
+
+
+
+
+
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

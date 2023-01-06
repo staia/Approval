@@ -8,9 +8,14 @@ using System.Linq;
 
 namespace Approval.Services
 {
-    public static class OrderServices
+    public class OrderServices
     {
-        public static BaseResponce<bool> CreateOrder(this ListOrder order, IDbConnection connect)
+        DbConnection Database { get; set; }
+        public OrderServices(DbConnection connection)
+        {
+            Database= connection;
+        }
+        public BaseResponce<bool> CreateOrder(ListOrder order)
         {
             BaseResponce<bool> responce = new BaseResponce<bool>();
             responce.Status = StatusCode.Ok;
@@ -20,7 +25,7 @@ namespace Approval.Services
             try
             {
                 //write to DB
-                using (IDbConnection database = connect)
+                using (IDbConnection database = Database.Conneсt)
                 {
                     //order.Amount
                     database.Execute("INSERT INTO ListOrders ( Title, Category, GoalOfProcurement, UnitPrice, PlaceOfDelivery, Amount, Attachment, Price, DesireDate, PurchasingNotes, Created, HeadOfDepartment, GeneralManager, HeadOfIT, NumberFromERP) VALUES" +
@@ -35,20 +40,20 @@ namespace Approval.Services
             return responce;
         }
 
-        public static ListOrder GetOrder(int idOrder, IDbConnection connect)
+        public ListOrder GetOrder(int idOrder)
         {
             ListOrder order = new ListOrder();
-            using (IDbConnection database = connect)
+            using (IDbConnection database = Database.Conneсt)
             {
                 order = database.QueryFirstOrDefault<ListOrder>("SELECT * FROM ListOrders WHERE Id = @Id", new { Id = idOrder });
             }
             return order;
         }
 
-        public static List<ListOrder> Search(string find, IDbConnection connect, string category = "all", string role = "user")
+        public List<ListOrder> Search(string find,  string category = "all", string role = "user")
         {
             List<ListOrder> result = new List<ListOrder>();
-            using(IDbConnection database = connect)
+            using(IDbConnection database = Database.Conneсt)
             {
                 result= database.Query<ListOrder>("SELECT * FROM ListOrders " +
                     "WHERE Title LIKE @Search", new { Search = find + "%"}).ToList();

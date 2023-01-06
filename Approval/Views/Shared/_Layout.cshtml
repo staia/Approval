@@ -1,16 +1,13 @@
 ﻿@*@inject SignInManager<ApplicationUser> signInManager;*@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-      
+<head>      
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Approval</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-
-    
-     
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />     
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -25,40 +22,36 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
-                        </li>
-                         
+                        </li>                      
                        
                         
                         @if (User.Identity.IsAuthenticated)
                         {
                                 <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FormCreate"> </a>
-                                </li>
-                            
+                                </li>                            
                         }
 
                     </ul>
                 </div>
-                 @if (User.Identity.IsAuthenticated)
-                    {
-                    if (User.IsInRole("Admin"))
-                        {
-                            <a asp-controller="Home" asp-action="AllOrders"><button type="button"  class="btnUniversalAllOrders">All Requests</button></a>
-                        }
-                    else if (User.IsInRole("Purchase"))
-                    {
-                        <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnUniversalAllOrders">All Requests</button></a>
-                    }
-                    else
-                        {
-                           <a asp-controller="Home" asp-action="Index"><button type="button"  class="btnUniversalAllOrders">Cancel</button></a>
-                        }        
-                    }
-                </div>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                            if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-controller="Home" asp-action="AllOrders"><button type="button"  class="btnUniversalAllOrders">All Requests</button></a>
+                                }
+                            else if (User.IsInRole("Purchase"))
+                            {
+                                <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnUniversalAllOrders">All Requests</button></a>
+                            }
+                            else
+                                {
+                                   <a asp-controller="Home" asp-action="Index"><button type="button"  class="btnUniversalAllOrders">Cancel</button></a>
+                                }        
+                            }
+            </div>            
             
-            
-    <a asp-controller="Home" asp-action="SignOut" ><button type="button"  class="btnUniversalAllOrders">Sign Out</button></a>
-     
+    <a asp-controller="Home" asp-action="SignOut" ><button type="button"  class="btnUniversalAllOrders">Sign Out</button></a>     
         </nav>
     </header>
     <div class="container">
@@ -73,7 +66,6 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-
 
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
