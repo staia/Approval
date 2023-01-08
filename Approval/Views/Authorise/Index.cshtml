@@ -33,7 +33,7 @@ else
             </div>
             <div ng-app ng-init="checked = false">
                 <span class="text-danger">@ViewData["ValidationMessage"]</span>
-                <form class="form-signin" asp-controller="Home" asp-action="Autorize" method="post">
+                <form class="form-signin" asp-controller="Authorise" asp-action="Autorize" method="post">
 
                     <label for="username">Username</label>
                     <input asp-for="UserName" class="form-styling" type="text" name="UserName" placeholder="" />
@@ -53,7 +53,7 @@ else
                     </div>
                 </form>
 
-                <form class="form-signup" asp-controller="Home" asp-action="UserModelRegister" name="form">
+                <form class="form-signup" asp-controller="Authorise" asp-action="UserModelRegister" name="form">
 
                     <label for="username">Username</label>
                     <input asp-for="UserName" class="form-styling" type="text" name="UserName" placeholder="" />

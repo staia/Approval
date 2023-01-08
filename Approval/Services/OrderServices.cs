@@ -60,6 +60,17 @@ namespace Approval.Services
             }
             return result;
         }
-    
+
+
+        public void DeleteItem(int idRequest)
+        {
+            using (IDbConnection database = Database.Conneсt)
+            {
+                database.Execute("Delete from ListOrders where Id = @Id", new
+                {
+                    Id = idRequest,
+                });
+            }
+        }
     }
 }

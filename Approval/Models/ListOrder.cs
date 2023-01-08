@@ -31,15 +31,5 @@ namespace Approval.Models
         public string HeadOfIT { get; set; }
         public string NumberFromERP { get; set; }
         public string WarehouseManager { get; set; }
-        public void DeleteItem(int idRequest, IDbConnection connect)
-        {
-            using (IDbConnection database = connect)
-            {
-                database.Execute("Delete from ListOrders where Id = @Id", new
-                {
-                    Id = idRequest,
-                });
-            }
-        }
     } 
 }

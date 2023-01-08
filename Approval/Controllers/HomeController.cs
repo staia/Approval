@@ -36,17 +36,6 @@ namespace Approval.Controllers
         }
        
 
-        [HttpPost]
-        public async Task<IActionResult> Search(string searchString)
-        {
-            var result = _order.Search(searchString);
-            PageData data = new PageData()
-            {
-                ListOrders = result
-            };
-            return View("AllOrders", data);           
-        }
-
         //[Authorize(Roles ="Admin")]
         public IActionResult AllOrders([FromServices] PageData page)
         {            
@@ -102,20 +91,20 @@ namespace Approval.Controllers
 
         public IActionResult Edit(int idRequest)
         {
-            var order = OrderServices.GetOrder(idRequest, Conneсt);     // завернуть в BaseResponce
+            var order = _order.GetOrder(idRequest);     // завернуть в BaseResponce
             return View(order);
         }
 
         public ActionResult Delete(int idRequest)
         {
             ListOrder orders = new ListOrder();
-            orders.DeleteItem(idRequest, Conneсt);
+            _order.DeleteItem(idRequest);
             return RedirectToAction("AllOrders");
         }
 
         public IActionResult Preview(int idRequest, string data)
         {
-            var order = OrderServices.GetOrder(idRequest, Conneсt);
+            var order = _order.GetOrder(idRequest);
             return View("Preview", order);
         }
 

@@ -17,15 +17,5 @@ namespace Approval.Models
             Database = connect;
         }
 
-        }
-        public PageData()
-        {
-            ListOrders = new List<ListOrder>();
-
-            using(IDbConnection database = Database.Conneсt)
-            {
-                ListOrders = database.Query<ListOrder>("SELECT ID, Title, PRice, Status, Created, CreatedBy,  NumberFromERP FROM ListOrders").ToList();
-            }
-        }
     }
 }
