@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
 using System.Data;
 
 namespace Approval.Services
@@ -16,7 +17,7 @@ namespace Approval.Services
 
         public DbConnection(string connect)
         {
-            _connect = connect;
+           _connect = connect;
         }
     }
 }

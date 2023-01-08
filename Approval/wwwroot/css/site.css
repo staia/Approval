@@ -211,7 +211,30 @@ label {
     padding-right: 40px;
     transition: background .5s ease;
 }
-
+.form-signin .but-google {
+    background: #1059FF;
+    text-align: center;
+    width: 100%;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+.form-signin .but-google:hover {
+    background: #1570FF;
+}
+    .form-signin .but-google a {
+        display: block;
+        color: #ccc;
+        padding: 5px;
+        transition: 0.3s;
+    }
+    .form-signin .but-google a:hover {
+        color: #ffffff;
+        text-decoration: none;
+    }
+/*.but-google{ 
+    background: rgba(145, 45, 45, 0.4);
+    color: blueviolet;
+}*/
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
     position: absolute;

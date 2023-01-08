@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Approval.Services
 {
-    public static class OrderServices
+    public class OrderServices
     {
         public static BaseResponce<bool> CreateOrder(this ListOrder order, IDbConnection connect)
         {
@@ -20,7 +20,7 @@ namespace Approval.Services
             try
             {
                 //write to DB
-                using (IDbConnection database = connect)
+                using (IDbConnection database = DateBase.Conneсt)
                 {
                     //order.Amount
                     database.Execute("INSERT INTO ListOrders ( Title, Category, GoalOfProcurement, UnitPrice, PlaceOfDelivery, Amount, Attachment, Price, DesireDate, PurchasingNotes, Created, HeadOfDepartment, GeneralManager, HeadOfIT, NumberFromERP) VALUES" +

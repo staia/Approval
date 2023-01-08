@@ -1,5 +1,6 @@
 ﻿using Approval.Models;
 using Approval.Services;
+using Dapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -26,20 +27,12 @@ namespace Approval.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IConfiguration _configuration;
+        private readonly OrderServices _order;
 
-        public HomeController(ILogger<HomeController> logger, 
-                                IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, OrderServices order)
         {
             _logger = logger;
-            _configuration = configuration;  
-        }
-        public IDbConnection Conneсt
-        {
-            get
-            {
-                return new SqlConnection(_configuration.GetConnectionString("Remote"));
-            }
+            _order = order;
         }
 
 
@@ -65,8 +58,8 @@ namespace Approval.Controllers
         [Authorize(Roles ="Admin")]
         public IActionResult AllOrders()
         {
-            PageData AllOrdersTable = new PageData(Conneсt);
-            return View(AllOrdersTable);
+          
+            return View(page);
         }
 
         //[Authorize(  Roles = "Purchase")]
@@ -98,7 +91,7 @@ namespace Approval.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = orderCreate.CreateOrder(Conneсt);
+                var result = _order.CreateOrder(orderCreate);
                 ViewData["ValidationMessage"] = result.ErrorMessage;
                 if (result.Status == Models.StatusCode.Ok)
                 {
@@ -112,69 +105,15 @@ namespace Approval.Controllers
         }
 
 
-        public IActionResult Index()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                var user = User.Identities.First().Claims.ToList();
-
-                if (User.IsInRole("Admin"))
-                {
-                    ViewData["ValidationMessage"] = "Autorize Admin";
-                }
-                else
-                {
-                    ViewData["ValidationMessage"] = "Autorize User";
-                }
-            }
-            else ViewData["ValidationMessage"] = "Not ";
-            return View();
-        }
 
 
-        [HttpPost]   
-        public IActionResult Autorize(RegisterAtUserModel userdata)
-        {
-            if (ModelState.IsValid)
-            { 
-                var res = userdata.UserModelRegister(Conneсt);
-                ViewData["ValidationMessage"] = res.ErrorMessage;
-                if (res.Status == Models.StatusCode.Ok)
-                {
-                    // ModelState.Clear();                                   //очистеть после заполнения
-                    // return View();
-                    AvtotizeUser(res.Data);
-                    return RedirectToAction("Index");
-                }
-                return View("Index", userdata);
-            }
-            ViewData["ValidationMessage"] = "Data is not required";
-            return View("Index", userdata);
-        }
 
-        void AvtotizeUser(RegisterAtUserModel userdata)
-        {
-            List<Claim> claims = new List<Claim>()                 // личность на сервери 
-            {
-                 new Claim(ClaimTypes.Hash, userdata.IdUser.ToString()),
-                 new Claim(ClaimTypes.Role, userdata.Role),          
-                 new Claim(ClaimTypes.Email, userdata.Email),                          
-            }; 
-            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Hash, ClaimTypes.Role);
-            ClaimsPrincipal avtorizeHead = new ClaimsPrincipal(identity);
-            HttpContext.SignInAsync(avtorizeHead);
-        }
 
-        public ActionResult SignOut()                              //   != авторизация
-        {
-            HttpContext.SignOutAsync();
-            return RedirectToAction("Index");
-        }
-        [Authorize]  //(Role = "Admin")
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+
+
+
+
+
 
         public IActionResult AccessDenied()
         {
