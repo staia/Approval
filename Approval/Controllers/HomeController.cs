@@ -46,9 +46,6 @@ namespace Approval.Controllers
         public IActionResult FormCreate()
         {
             return View();
-            void Hide_Click(Object Sender, EventArgs e)
-            {                
-            }
         }
 
         [HttpPost]
@@ -102,7 +99,7 @@ namespace Approval.Controllers
             return RedirectToAction("AllOrders");
         }
 
-        public IActionResult Preview(int idRequest, string data)
+        public IActionResult Preview(int idRequest)
         {
             var order = _order.GetOrder(idRequest);
             return View("Preview", order);

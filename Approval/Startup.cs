@@ -30,6 +30,8 @@ namespace Approval
 
             services.AddTransient<OrderServices>();
             services.AddTransient<PageData>();
+
+
             services.AddControllersWithViews();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

@@ -64,7 +64,7 @@ namespace Approval.Controllers
                 if (res.Status == Models.StatusCode.Ok)
                 {
 
-                    await AvtotizeUser(res.Data);
+                    await AddSessionUser(res.Data);
                     return RedirectToAction("Index");
                 }
                 return View("Index");
@@ -73,7 +73,7 @@ namespace Approval.Controllers
             return View("Index");
         }
 
-        async Task AvtotizeUser(RegisterAtUserModel userdata)
+        async Task AddSessionUser(RegisterAtUserModel userdata)
         {
             List<Claim> claims = new List<Claim>()
             {

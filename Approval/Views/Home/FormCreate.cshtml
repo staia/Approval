@@ -1,0 +1,127 @@
+﻿@using Approval.Enums
+<link rel="stylesheet" href="~/css/FormStyle.css" />
+@model ListOrder
+ 
+<div class="form-style"> 
+        <div class="text-danger">@ViewData["ValidationMessage"]</div>
+        <form method="post" asp-controller="Home" asp-action="FormCreate">
+            <div class="block">
+                <legend>BASIC PROCUREMENT DATA</legend>
+            </div>
+            <div class="table-devide-2">
+                <div class="cells-style">
+                    <label asp-for="Title"> </label>                    
+                    <input asp-for="Title" class=input2>
+                <b><span asp-validation-for="Title" class="text-danger"></span></b>
+            </div>
+                
+                <div class ="cells-style">
+                <label asp-for="Category" > </label>                
+                    <select asp-for="Category" class="dropdownStyle" asp-items="Html.GetEnumSelectList<CategoryEnums>()">
+                        <option value="">Please choose a category</option>
+                    </select>
+                    <b><span asp-validation-for="Category" class="text-danger"></span></b>               
+                </div>
+
+                <div class="cells-style">
+                    <label asp-for="GoalOfProcurement">Goal Of Procurement</label>
+                    <input asp-for="GoalOfProcurement" class=input2>
+                </div>
+
+                <div class="cells-style">
+                    <label asp-for="UnitPrice">Unit Price</label>
+                    <input asp-for="UnitPrice" class=input2>
+                <b><span asp-validation-for="UnitPrice" class="text-danger"></span></b>
+                </div>
+
+                <div class="cells-style">
+                <label asp-for="PlaceOfDelivery">Place Of Delivery</label>
+                <div>
+                    <select asp-for="PlaceOfDelivery" class="dropdownStyle" asp-items="Html.GetEnumSelectList<DeliveryEnum>()">
+                        <option value="">Please choose a city</option>
+                    </select>
+                    <b><span asp-validation-for="PlaceOfDelivery" class="text-danger"></span></b>
+                </div>
+            </div>
+
+            <div class="cells-style">
+                    <label asp-for="Amount"></label>
+                    <input asp-for="Amount" class=input2>
+                <b><span asp-validation-for="Amount" class="text-danger"></span></b>
+            </div>
+
+            <div class="cells-style">
+                <label asp-for="Attachment"></label>  
+                    <input asp-for="Attachment" class =input2>
+                </div>
+                <div class="cells-style">
+                    <label asp-for="Price"></label>
+                    <input asp-for ="Price" class=input2>
+                <b><span asp-validation-for="Price" class="text-danger"></span> </b>
+            </div>
+
+                <div class="cells-style">
+                <label asp-for="DesireDate">Desire Date</label>
+                    <input asp-for="DesireDate" class=input2>
+                </div>
+
+                <div class="cells-style">
+                    <label asp-for="PurchasingNotes">Purchasing Notes</label>
+                    <input asp-for="PurchasingNotes" class=input2> 
+                </div>
+                </div>
+                <br />                                                                                @*ERROR, HAVE TO CHANGE*@
+                <div class="block">
+                <legend>RELEASE OF PROCUREMENT REQUEST</legend>
+                </div>
+                <div class="table-devide-2">
+
+                    <div class="cells-style">
+                    <label asp-for="CreatedBy">Created by</label>
+                    <input asp-for="CreatedBy" class=input2>                   
+                    </div>
+
+                    <div class="cells-style">
+                    <label asp-for="HeadOfDepartment">Head Of Department</label>
+                    <input asp-for="HeadOfDepartment" class=input2>                   
+                    </div>
+
+                    <div class="cells-style">
+                    <label asp-for="GeneralManager">General Manager</label>
+                    <input asp-for="GeneralManager" class=input2>                    
+                    </div>
+
+                    <div class="cells-style">
+                    <label asp-for="HeadOfIT">Head Of IT</label>
+                    <input asp-for="HeadOfIT" class=input2>
+                    </div>
+
+                    <div class="cells-style">
+                <label asp-for="WarehouseManager">Warehouse Manager</label>
+                <input asp-for="WarehouseManager" class=input2>
+                    </div>
+                </div><br />
+
+
+                <div class="block">
+                @if (User.IsInRole("Purchase"))
+                {
+                  <legend>PURCHASE</legend>             
+                     <div class="table-devide-2">
+                     <div class="cells-style">
+                         <label asp-for="NumberFromERP">Number From ERP</label>
+                         <input asp-for="NumberFromERP" class=input2>                   
+                     </div>
+                 </div>
+                }
+                else
+                {           
+                }    
+
+            <br/>
+            <button type="submit" class="btnUniversalFormCreate" asp-action="Saved">Save</button>
+        
+        </form>
+</div>
+ 
+ 

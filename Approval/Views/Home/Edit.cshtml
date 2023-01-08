@@ -1,0 +1,105 @@
+﻿@model ListOrder
+
+<link rel="stylesheet"  href="~/css/FormStyle.css" />
+<form method="post" asp-controller="Home" asp-action="Edit">
+<div class="form-style">
+        <div class="blockPreview">
+        <legend class="Abschnitt">BASIC PROCUREMENT DATA</legend>
+    </div>
+    <div class="table-devide-22">
+        <div class="cells-style">
+            <label asp-for="Title" class="labelPreview"> </label>           
+            <input asp-for="Title" class=inputPreviewEdit>
+        </div>
+
+        <div class="cells-style">
+            <label asp-for="Category" class=labelPreview></label>
+       @*     <form asp-action="FormCreate" asp-controller="Home" method="post">
+                <select asp-for="SelectedValue" asp-items="Model.Options"></select>
+                <input type="submit" />
+            </form>*@
+
+                <input asp-for="Category" class=inputPreviewEdit>
+        </div>
+        <div class="cells-style">
+            <label asp-for="GoalOfProcurement" class=labelPreview>Goal Of Procurement</label>
+                <input asp-for="GoalOfProcurement" class=inputPreviewEdit>
+        </div>
+        <div class="cells-style">
+            <label asp-for="UnitPrice" class=labelPreview>Unit Price</label>
+                <input asp-for="UnitPrice" class=inputPreviewEdit>
+        </div>
+
+        <div class="cells-style">
+            <label asp-for="PlaceOfDelivery" class=labelPreview>Place Of Delivery</label>
+            <input asp-for="PlaceOfDelivery" class=inputPreview>
+        </div>
+        <div class="cells-style">
+            <label asp-for="Amount" class=labelPreview></label>
+                <input asp-for="Amount" class=inputPreviewEdit>
+        </div>
+
+        <div class="cells-style">
+            <label asp-for="Attachment" class=labelPreview></label>
+                <input asp-for="Attachment" class=inputPreviewEdit>
+        </div>
+        <div class="cells-style">
+            <label asp-for="Price" class=labelPreview></label>
+                <input asp-for="Price" class=inputPreviewEdit>
+        </div>
+
+        <div class="cells-style">
+            <label asp-for="DesireDate" class=labelPreview>Desire Date</label>
+                <input asp-for="DesireDate" class=inputPreviewEdit>
+        </div>
+
+        <div class="cells-style">
+            <label asp-for="PurchasingNotes" class=labelPreview>Purchasing Notes</label>
+                <input asp-for="PurchasingNotes" class=inputPreviewEdit>
+        </div>
+    </div>
+
+
+        <div class="blockPreview">
+                <legend>RELEASE OF PROCUREMENT REQUEST</legend>
+                </div>
+                <div class="table-devide-22">
+
+                    <div class="cells-style">
+            <label asp-for="CreatedBy" class=labelPreview>Created by</label>
+                <input asp-for="CreatedBy" class=inputPreviewEdit>
+        </div>
+
+                    <div class="cells-style">
+            <label asp-for="HeadOfDepartment" class=labelPreview>Head Of Department</label>
+                <input asp-for="HeadOfDepartment" class=inputPreviewEdit>
+        </div>
+
+                    <div class="cells-style">
+            <label asp-for="GeneralManager" class=labelPreview>General Manager</label>
+                <input asp-for="GeneralManager" class=inputPreviewEdit>
+        </div>
+
+                    <div class="cells-style">
+            <label asp-for="HeadOfIT" class=labelPreview>Head Of IT</label>
+                <input asp-for="HeadOfIT" class=inputPreviewEdit>
+                    </div>
+
+                    <div class="cells-style">
+            <label asp-for="WarehouseManager" class=labelPreview>Warehouse Manager</label>
+                <input asp-for="WarehouseManager" class=inputPreviewEdit>
+                    </div>
+                </div>
+<br />
+        <div class="blockPreview">
+                <legend>PURCHASE</legend>
+            </div>
+            <div class="table-devide-22">
+            <div class="cells-style">
+            <label asp-for="NumberFromERP" class=labelPreview>Number From ERP</label>
+                <input asp-for="NumberFromERP" class=inputPreviewEdit>
+        </div>
+            </div>
+            <br/>
+</div>
+</form>
