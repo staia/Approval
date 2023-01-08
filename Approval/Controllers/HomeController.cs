@@ -34,50 +34,26 @@ namespace Approval.Controllers
             _logger = logger;
             _order = order;
         }
+       
 
-
-
-        //private readonly PageData _context;
-
-        //public HomeController(PageData context)
-        //{
-        //    _context = context;
-        //}
         [HttpPost]
         public async Task<IActionResult> Search(string searchString)
         {
-            var result = OrderServices.Search(searchString, Conneсt);
+            var result = _order.Search(searchString);
             PageData data = new PageData()
             {
                 ListOrders = result
             };
-            return View("AllOrders", data);
-            //return View(await items.ToListAsync());
+            return View("AllOrders", data);           
         }
 
-        [Authorize(Roles ="Admin")]
-        public IActionResult AllOrders()
-        {
-          
+        //[Authorize(Roles ="Admin")]
+        public IActionResult AllOrders([FromServices] PageData page)
+        {            
             return View(page);
         }
 
-        //[Authorize(  Roles = "Purchase")]
-        //public IActionResult AllOrders()
-        //{
-        //    PageData AllOrdersTable = new PageData(Conneсt);
-        //    return View(AllOrdersTable);
-        //}
-
-
-
-        //[HttpGet]
-        //public async Task<IActionResult> AllOrders(string Empsearch)
-        //{
-        //    ViewData["GetEmployeedetails"] = Empsearch;
-        //    var empquery = from x in Conneсt.Orders select x;
-        //}
-
+  
         public IActionResult FormCreate()
         {
             return View();
@@ -142,6 +118,17 @@ namespace Approval.Controllers
             var order = OrderServices.GetOrder(idRequest, Conneсt);
             return View("Preview", order);
         }
+
+
+
+
+
+
+
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

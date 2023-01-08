@@ -18,7 +18,7 @@ namespace Approval.Models
         }
 
         }
-        public PageData(IDbConnection connect)
+        public PageData()
         {
             ListOrders = new List<ListOrder>();
 

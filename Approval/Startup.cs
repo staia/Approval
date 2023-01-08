@@ -28,7 +28,10 @@ namespace Approval
         {
             services.AddTransient<AuthoriseLogic>();
 
+            services.AddTransient<OrderServices>();
+            services.AddTransient<PageData>();
             services.AddControllersWithViews();
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
@@ -42,8 +45,7 @@ namespace Approval
 
 
         }
-
-
+         
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -77,6 +79,7 @@ namespace Approval
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            
         }
     }
 }

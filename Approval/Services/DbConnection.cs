@@ -19,5 +19,6 @@ namespace Approval.Services
         {
            _connect = connect;
         }
+
     }
 }
