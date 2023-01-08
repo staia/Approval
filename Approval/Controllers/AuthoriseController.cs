@@ -19,20 +19,14 @@ namespace Approval.Controllers
     public class AuthoriseController : Controller
     {
         private readonly ILogger<AuthoriseController> _logger;
-        private readonly IConfiguration _configuration;         // считыванье с файла
+        private readonly AuthoriseLogic _authorise;
 
-        public AuthoriseController(ILogger<AuthoriseController> logger, IConfiguration configuration)
+        public AuthoriseController(ILogger<AuthoriseController> logger, AuthoriseLogic authorise)
         {
             _logger = logger;
-            _configuration = configuration;
+            _authorise = authorise;
         }
-        public IDbConnection Conneсt
-        {
-            get
-            {
-                return new SqlConnection(_configuration.GetConnectionString("Remote"));
-            }
-        }
+ 
         public IActionResult Index()
         {
 
@@ -51,7 +45,7 @@ namespace Approval.Controllers
                 }
                 else
                 {
-                    ViewData["ValidationMessage"] = "Autorize Purchase";
+                    ViewData["ValidationMessage"] = "Autorize";
                 }
             }
             else ViewData["ValidationMessage"] = "Not ";
@@ -65,7 +59,7 @@ namespace Approval.Controllers
             if (ModelState.IsValid)
             {
 
-                var res = await userdata.AutorizeAsync(Conneсt);
+                var res = await _authorise.AutorizeAsync(userdata);
                 ViewData["ValidationMessage"] = res.ErrorMessage;
                 if (res.Status == Models.StatusCode.Ok)
                 {

@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace Approval.Services
 {
-    public static class AuthoriseLogic
+    public  class AuthoriseLogic
     {
-        public static async Task<BaseResponce<RegisterAtUserModel>> AutorizeAsync(this AutorizeUserModel user, IDbConnection connectUser)
+        DbConnection Database { get; set; }
+        public AuthoriseLogic(DbConnection connection)
+        {
+            Database = connection;
+        }
+        public  async Task<BaseResponce<RegisterAtUserModel>> AutorizeAsync(AutorizeUserModel user)
         {
             BaseResponce<RegisterAtUserModel> baseResponce = new BaseResponce<RegisterAtUserModel>();
             baseResponce.Status = StatusCode.Ok;
         
             try
             {
-                using (IDbConnection database = connectUser)
+                using (IDbConnection database = Database.Conneсt)
                 {
                     baseResponce.Data = await database.QuerySingleAsync<RegisterAtUserModel>("Select * From Avtorize Where Username = @UserName AND EnterPassword = @EnterPassword", user);
                 }
@@ -29,7 +34,7 @@ namespace Approval.Services
             return baseResponce;
         }
 
-        public static BaseResponce<RegisterAtUserModel> UserModelRegister(this RegisterAtUserModel userdata, IDbConnection connect) //this вызывает Autorize
+        public  BaseResponce<RegisterAtUserModel> UserModelRegister(RegisterAtUserModel userdata) 
         {
             BaseResponce<RegisterAtUserModel> baseResponce = new BaseResponce<RegisterAtUserModel>();
             baseResponce.Status = StatusCode.Ok;
@@ -37,7 +42,7 @@ namespace Approval.Services
 
             try
             {
-                using (IDbConnection database = connect)
+                using (IDbConnection database = Database.Conneсt)
                 {
                     var user = database.QueryFirstOrDefault<RegisterAtUserModel>("SELECT * FROM Avtorize WHERE Email = @Email", userdata);
                     if (user != null)

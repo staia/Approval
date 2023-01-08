@@ -1,3 +1,5 @@
+using Approval.Models;
+using Approval.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,13 +26,24 @@ namespace Approval
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<AuthoriseLogic>();
+
             services.AddControllersWithViews();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
                     options.LoginPath = "/account/signin";
                 });
+
+            services.AddTransient<DbConnection>(settings =>
+            {
+                return new DbConnection(Configuration.GetConnectionString("Remote"));
+            });
+
+
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

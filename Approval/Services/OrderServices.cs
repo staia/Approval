@@ -4,9 +4,14 @@ using System.Data;
 
 namespace Approval.Services
 {
-    public static class OrderServices
+    public class OrderServices
     {
-        public static BaseResponce<bool> CreateOrder(this OrderCreate order, IDbConnection connect)
+        DbConnection DateBase { get; set; }
+        public OrderServices(DbConnection connection)
+        {
+            DateBase = connection;
+        }
+        public BaseResponce<bool> CreateOrder(OrderCreate order)
         {
             BaseResponce<bool> responce = new BaseResponce<bool>();
             responce.Status = StatusCode.Ok;
@@ -15,7 +20,7 @@ namespace Approval.Services
             try
             {
                 //write to DB
-                using (IDbConnection database = connect)
+                using (IDbConnection database = DateBase.Conneсt)
                 {
                     //order.Amount
                     database.Execute("INSERT INTO ListOrders ( Title, Category, GoalOfProcurement, UnitPrice, PlaceOfDelivery, Amount, Attachment, Price, DesireDate, PurchasingNotes, Created, HeadOfDepartment, GeneralManager, HeadOfIT, NumberFromERP) VALUES" +

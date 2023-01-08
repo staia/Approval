@@ -20,27 +20,18 @@ namespace Approval.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IConfiguration _configuration;         // считыванье с файла
+        private readonly OrderServices _order;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, OrderServices order)
         {
             _logger = logger;
-            _configuration = configuration;  
-        }
-        public IDbConnection Conneсt
-        {
-            get
-            {
-                return new SqlConnection(_configuration.GetConnectionString("Remote"));
-            }
+            _order = order;
         }
 
-
-
-        public IActionResult AllOrders()
+        public IActionResult AllOrders([FromServices] PageData page)
         {
-            PageData AllOrdersTable = new PageData(Conneсt);
-            return View(AllOrdersTable);
+          
+            return View(page);
         }
 
         public IActionResult FormCreate()
@@ -53,7 +44,7 @@ namespace Approval.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = orderCreate.CreateOrder(Conneсt);
+                var result = _order.CreateOrder(orderCreate);
                 ViewData["ValidationMessage"] = result.ErrorMessage;
                 if (result.Status == Models.StatusCode.Ok)
                 {
