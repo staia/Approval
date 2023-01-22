@@ -1,4 +1,5 @@
-﻿using Approval.Models;
+﻿using Approval.Interfaces;
+using Approval.Models;
 using Dapper;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,11 +12,13 @@ namespace Approval.Services
     public class OrderServices
     {
         DbConnection Database { get; set; }
-        public OrderServices(DbConnection connection)
-        {
-            Database= connection;
-        }
-        public BaseResponce<bool> CreateOrder(ListOrder order)
+		IBotApproval Bot { get; set; }
+		public OrderServices(DbConnection connection, IBotApproval bot)
+		{
+			Database = connection;
+			Bot = bot;
+		}
+		public BaseResponce<bool> CreateOrder(ListOrder order)
         {
             BaseResponce<bool> responce = new BaseResponce<bool>();
             responce.Status = StatusCode.Ok;
@@ -31,7 +34,9 @@ namespace Approval.Services
                     database.Execute("INSERT INTO ListOrders ( Title, Category, GoalOfProcurement, UnitPrice, PlaceOfDelivery, Amount, Attachment, Price, DesireDate, PurchasingNotes, Created, HeadOfDepartment, GeneralManager, HeadOfIT, NumberFromERP) VALUES" +
                         "(@Title, @Category, @GoalOfProcurement, @UnitPrice, @PlaceOfDelivery, @Amount, @Attachment, @Price, @DesireDate, @PurchasingNotes, GetDate(), @HeadOfDepartment, @GeneralManager, @HeadOfIT, @NumberFromERP)", order);
                 }
-            }
+                Bot.SendApproveOrder(840338962, "New Order #" + order.ID + " / " + order.Title);
+				//Bot.SendMessageToUser("New Order #" + order.ID + " / " + order.Title);
+			}
             catch (System.Exception ex)
             {
                 responce.Status = StatusCode.Error;

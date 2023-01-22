@@ -65,7 +65,7 @@ namespace Approval.Controllers
                 {
 
                     await AddSessionUser(res.Data);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("FormCreate", "Home");
                 }
                 return View("Index");
             }

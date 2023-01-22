@@ -1,3 +1,4 @@
+using Approval.Interfaces;
 using Approval.Models;
 using Approval.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -29,6 +30,7 @@ namespace Approval
             services.AddTransient<AuthoriseLogic>();
 
             services.AddTransient<OrderServices>();
+            services.AddTransient<IBotApproval, TelegramService>();
             services.AddTransient<PageData>();
 
 

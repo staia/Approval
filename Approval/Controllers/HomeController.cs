@@ -58,24 +58,13 @@ namespace Approval.Controllers
                 if (result.Status == Models.StatusCode.Ok)
                 {
                     ModelState.Clear();
-                    return View();
+                    return RedirectToAction("Saved", "Home");                     
                 }
                 return View(orderCreate);
             }
             ViewData["ValidationMessage"] = "Data is not required";
             return View(orderCreate);
         }
-
-
-
-
-
-
-
-
-
-
-
 
         public IActionResult AccessDenied()
         {
