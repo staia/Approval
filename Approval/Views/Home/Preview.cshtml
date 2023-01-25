@@ -97,8 +97,14 @@
             <input readonly asp-for="NumberFromERP" class=inputPreview>
             </div><br />            
     </div>  
-    </form>    
-     
+   
+
+    @if (User.IsInRole("HeadDep"))
+    {
+    <button type="button" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/approve.png")" />  Approve </button>
+    <button type="button" class="btnUniversalFormCreate" style="background-color:coral; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/decline.png")" /> Decline</button>
+    }
+    </form>
 </div>
 
 @*<a asp-controller="Home" asp-action="Preview"><button type="button" class="btnUniversalFormCreate" target="_blank" onclick="window.print()">Print</button></a>*@

@@ -45,11 +45,7 @@
                             {
                                 <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnUniversalAllOrders">All Requests</button></a>
                             }
-                             else if (User.Equals("HeadOfDepartment"))
-                            {
-                                <button type="button" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/approve.png")" />  Approve </button>
-                                <button type="button" class="btnUniversalFormCreate" style="background-color:coral; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/decline.png")" /> Decline</button>
-                            }
+                    
                             else
                                 {
                                    <a asp-controller="Home" asp-action="Index"><button type="button"  class="btnUniversalAllOrders">Cancel</button></a>
