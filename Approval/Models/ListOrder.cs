@@ -7,12 +7,13 @@ using System.Data.SqlTypes;
 using System.Configuration;
 using Dapper;
 
+
 namespace Approval.Models
 {
     public class ListOrder
     {
         public int ID { get; set; }
-        [Required]
+        [Required] 
         public string Title { get; set; }
         public Status Status { get; set; }
         public DateTime Created { get; set; }
