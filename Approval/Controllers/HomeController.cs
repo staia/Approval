@@ -1,11 +1,13 @@
 ﻿using Approval.Models;
 using Approval.Services;
 using Dapper;
+using Grpc.Core;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.DataProtection.Repositories;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,6 +20,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -94,24 +97,12 @@ namespace Approval.Controllers
             return View("Preview", order);
         }
 
-
-
-
-
-
-
-
-
-
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             throw new Exception();
             // return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-         
+           
     }
 }

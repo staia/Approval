@@ -11,9 +11,13 @@
     </div>
     <div class="table-devide-22">
         <div class="cells-style">
-            <label asp-for="Title" class=labelPreview> </label> 
-            <input readonly asp-for="Title" class="inputPreview">
+            <label asp-for="ID" class=labelPreview> </label> 
+            <input readonly asp-for="ID" class="inputPreview">
         </div>
+            <div class="cells-style">
+                <label asp-for="Title" class=labelPreview> </label>
+                <input readonly asp-for="Title" class="inputPreview">
+            </div>
         <div class="cells-style">
             <label asp-for="Category" class=labelPreview></label>
             <input readonly asp-for="Category" class=inputPreview>
@@ -104,9 +108,28 @@
     <button type="button" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/approve.png")" />  Approve </button>
     <button type="button" class="btnUniversalFormCreate" style="background-color:coral; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/decline.png")" /> Decline</button>
     }
+        
+    else if (User.IsInRole("GenManager"))
+        {
+        <button type="button" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/approve.png")" />  Approve </button>
+        <button type="button" class="btnUniversalFormCreate" style="background-color:coral; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/decline.png")" /> Decline</button>
+        }
+
+        else if (User.IsInRole("HeadOfIT"))
+        {
+            <button type="button" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/approve.png")" />  Approve </button>
+            <button type="button" class="btnUniversalFormCreate" style="background-color:coral; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/decline.png")" /> Decline</button>
+        }
+        else if (User.IsInRole("WarMan"))
+        {
+            <button type="button" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/approve.png")" />  Approve </button>
+            <button type="button" class="btnUniversalFormCreate" style="background-color:coral; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/decline.png")" /> Decline</button>
+        }
+
+        <a asp-controller="Home" asp-action="EditFromPreview" ><button type="button" class="btnUniversalFormCreate">Change</button></a>
     </form>
 </div>
 
 @*<a asp-controller="Home" asp-action="Preview"><button type="button" class="btnUniversalFormCreate" target="_blank" onclick="window.print()">Print</button></a>*@
 <button type="button" class="btnUniversalFormCreate" onclick="window.print()" target="_blank">Print</button>
-<a asp-controller="Home" asp-action="Edit"><button type="button" class="btnUniversalFormCreate">Change</button></a>
+<a asp-controller="Home" asp-action="EditFromPreview"><button type="button" class="btnUniversalFormCreate">Change</button></a>

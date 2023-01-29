@@ -4,7 +4,10 @@
  
 <div class="form-style"> 
         <div class="text-danger">@ViewData["ValidationMessage"]</div>
-        <form method="post" asp-controller="Home" asp-action="FormCreate">
+       <form>
+
+        
+       <form method="post" asp-controller="Home" asp-action="FormCreate">
             <div class="block">
                 <legend>BASIC PROCUREMENT DATA</legend>
             </div>
@@ -50,10 +53,12 @@
                 <b><span asp-validation-for="Amount" class="text-danger"></span></b>
             </div>
 
-            <div class="cells-style">
-                <label asp-for="Attachment"></label>  
-                    <input asp-for="Attachment" class =input2>
+                <div class="cells-style">
+                     
+                        <label asp-for="Attachment"></label>  
+                    <input asp-for="Attachment" class =input2>    
                 </div>
+
                 <div class="cells-style">
                     <label asp-for="Price"></label>
                     <input asp-for ="Price" class=input2>
@@ -102,7 +107,6 @@
                     </div>
                 </div><br />
 
-
                 <div class="block">
                 @if (User.IsInRole("Purchase"))
                 {
@@ -117,11 +121,12 @@
                 else
                 {           
                 }    
-
             <br/>
             <button type="submit" class="btnUniversalFormCreate">Save</button>
-        
+
+            
         </form>
+    </form>
 </div>
  
  
