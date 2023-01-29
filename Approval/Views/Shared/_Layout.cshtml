@@ -45,7 +45,10 @@
                             {
                                 <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnUniversalAllOrders">All Requests</button></a>
                             }
-                    
+                    else if (User.IsInRole("HeadDep"))
+                    {
+                        <a asp-controller="Home" asp-action="AllOrders"><button type="button" class="btnUniversalAllOrders">All Requests</button></a>
+                    }
                             else
                                 {
                                    <a asp-controller="Home" asp-action="Index"><button type="button"  class="btnUniversalAllOrders">Cancel</button></a>

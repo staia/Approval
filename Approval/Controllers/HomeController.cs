@@ -40,6 +40,7 @@ namespace Approval.Controllers
        
 
         //[Authorize(Roles ="Admin")]
+        //[Authorize(Roles =  "HeadDep")]
         public IActionResult AllOrders([FromServices] PageData page)
         {            
             return View(page);
