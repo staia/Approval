@@ -1,10 +1,8 @@
 ﻿using Approval.Interfaces;
 using Approval.Models;
 using Dapper;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
+using System.Collections.Generic; 
+using System.Data; 
 using System.Linq;
 
 namespace Approval.Services
@@ -23,7 +21,6 @@ namespace Approval.Services
             BaseResponce<bool> responce = new BaseResponce<bool>();
             responce.Status = StatusCode.Ok;
             responce.ErrorMessage = "OK";
-
 
             try
             {
@@ -52,6 +49,18 @@ namespace Approval.Services
             {
                 order = database.QueryFirstOrDefault<ListOrder>("SELECT * FROM ListOrders WHERE Id = @Id", new { Id = idOrder });
             }
+            return order;
+        }
+
+        public ListOrder OrderApprove(int idOrder)
+        {
+            ListOrder order = new ListOrder();
+            using (IDbConnection database = Database.Conneсt)
+            {
+                order = database.QueryFirstOrDefault<ListOrder>("SELECT * FROM ListOrders WHERE Id = @Id", new { Id = idOrder });
+            }
+            Bot.SendMessageAllUser(order.Title + " / Approve");
+            order.Status = Enums.Status.HeadOfDepartment;
             return order;
         }
 

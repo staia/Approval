@@ -94,16 +94,11 @@ namespace Approval.Controllers
             return View("Preview", order);
         }
 
-
-
-
-
-
-
-
-
-
-
+        public IActionResult MessageApprove(int idRequest)
+        {
+            var order = _order.OrderApprove(idRequest);
+            return View("Preview", order);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
