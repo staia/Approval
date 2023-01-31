@@ -99,7 +99,7 @@
 
         @if (User.IsInRole("HeadDep") && Model.Status != Approval.Enums.Status.HeadOfDepartment)
         {
-            <a type="button" asp-route-idRequest="@Model.ID" asp-action="MessageApprove" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/yes.png")" />  Approve </a>
+                <a type="button" asp-route-idRequest="@Model.ID" asp-action="MessageApprove" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/yes.png")" />  Approve </a>
             <a type="button" asp-route-idRequest="@Model.ID" asp-action="MessageApprove" class="btnUniversalFormCreate" style="background-color:coral; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/no.png")" /> Decline</a>
         }
         else if (User.IsInRole("GenManager"))
@@ -114,8 +114,8 @@
         }
         else if (User.IsInRole("Admin") && Model.Status  != Approval.Enums.Status.HeadOfDepartment)
         {
-            <a type="button" asp-route-idRequest="@Model.ID" asp-action="MessageApprove" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/yes.png")" />  Approve </a>
-            <a type="button" asp-route-idRequest="@Model.ID" asp-action="MessageApprove" class="btnUniversalFormCreate" style="background-color:coral; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/no.png")" /> Decline</a>
+                <a type="button" asp-route-idRequest="@Model.ID" asp-action="MessageApprove" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/yes.png")" /> &zwnj;  Approve </a>
+                <a type="button" asp-route-idRequest="@Model.ID" asp-action="MessageApprove" class="btnUniversalFormCreate" style="background-color:coral; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/no.png")" /> &zwnj; Decline</a>
         }
         <a asp-controller="Home" asp-action="EditFromPreview" type="button" class="btnUniversalFormCreate">Change</a>
         </form>

@@ -187,13 +187,13 @@
     cursor: pointer;
     display: inline-flex;
     font-family: "JetBrains Mono",monospace;
-    height: 40px;
+    height: 45px;
     justify-content: center;
     line-height: 1;
     list-style: none;
     overflow: hidden;
-       padding-left: 16px;
-        padding-right: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
     position: relative;
     text-align: left;
     text-decoration: none;
@@ -203,7 +203,7 @@
     touch-action: manipulation;
     white-space: nowrap;
     will-change: box-shadow,transform;
-    font-size: 18px;
+    font-size: 19px;
     outline: none;
 }
 
@@ -218,10 +218,11 @@
             outline: none;
         }
 
-        .btnUniversalAllOrders:active {
-            box-shadow: #D6D6E7 0 3px 7px inset;
-            transform: translateY(2px);
-        }
+    .btnUniversalAllOrders:active {
+        box-shadow: #D6D6E7 0 3px 7px inset;
+        transform: translateY(2px);
+        outline: none;
+    }
 
  
  
