@@ -64,7 +64,36 @@ namespace Approval.Controllers
             }
             ViewData["ValidationMessage"] = "Data is not required";
             return View(orderCreate);
+        }      
+
+        public IActionResult Edit(int idRequest)
+        {
+            var order = _order.GetOrder(idRequest);     // завернуть в BaseResponce
+            return View(order);
         }
+        [HttpPost]
+        public IActionResult Edit(ListOrder orderCreate)
+        {
+            string Titel = orderCreate.Title;
+            
+
+
+            return RedirectToAction("Saved", "Home");
+            //if (ModelState.IsValid)
+            //{
+            //    var result = _order.CreateOrder(orderCreate);
+            //    ViewData["ValidationMessage"] = result.ErrorMessage;
+            //    if (result.Status == Models.StatusCode.Ok)
+            //    {
+            //        ModelState.Clear();
+            //        return RedirectToAction("Saved", "Home");
+            //    }
+            //    return View(orderCreate);
+            //}
+            //ViewData["ValidationMessage"] = "Data is not required";
+            //return View(orderCreate);
+        }
+
 
         public IActionResult AccessDenied()
         {
@@ -74,13 +103,6 @@ namespace Approval.Controllers
         {
             return View();
         }
-
-        public IActionResult Edit(int idRequest)
-        {
-            var order = _order.GetOrder(idRequest);     // завернуть в BaseResponce
-            return View(order);
-        }
-
         public ActionResult Delete(int idRequest)
         {
             ListOrder orders = new ListOrder();
