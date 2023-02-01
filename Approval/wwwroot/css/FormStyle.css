@@ -175,7 +175,7 @@
         
     }
 
-.btnUniversalAllOrders {
+.btnUniversalAllOrders { 
     align-items: center;
     appearance: none;
     background-color: #FCFCFD;
@@ -195,6 +195,7 @@
     padding-left: 20px;
     padding-right: 20px;
     position: relative;
+    
     text-align: left;
     text-decoration: none;
     transition: box-shadow .15s,transform .15s;
@@ -230,12 +231,12 @@
 .dropdownStyle {
     font-size: 15px;
     border: 1px solid #0E3386;
-    border-radius: 20px;
+    border-radius: 15px;
     outline: none;
     height: 40px;
     width: 520px;
 }
-
+ 
     input {
         /*font-size: 25 25 95 85;*/
         /*font-weight: 50vw;*/

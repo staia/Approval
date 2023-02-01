@@ -1,26 +1,8 @@
 ﻿using Approval.Models;
 using Approval.Services;
-using Dapper;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
-using Microsoft.AspNetCore.DataProtection.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Protocols;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Approval.Controllers
 {
@@ -75,10 +57,9 @@ namespace Approval.Controllers
         public IActionResult Edit(ListOrder orderCreate)
         {
             string Titel = orderCreate.Title;
-            
-
 
             return RedirectToAction("Saved", "Home");
+
             //if (ModelState.IsValid)
             //{
             //    var result = _order.CreateOrder(orderCreate);

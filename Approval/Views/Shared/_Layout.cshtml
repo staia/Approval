@@ -45,7 +45,7 @@
                             {
                             if (User.IsInRole("Admin"))
                                 {
-                                    <a asp-controller="Home" asp-action="AllOrders"><button type="button"  class="btnUniversalAllOrders">All Requests</button></a>
+                                    <a asp-controller="Home" asp-action="AllOrders" style="margin-left:0px; type="button"  class="btnUniversalAllOrders">All Requests</a>
                                 }
                             else if (User.IsInRole("Purchase"))
                             {
@@ -57,8 +57,10 @@
                                 }        
                             }
             </div>
+            <a asp-controller="Home" asp-action="FormCreate" style="margin-right:25px;" type="button" class="btnUniversalAllOrders">Create </a>
+             
 
-            <a asp-controller="Authorise" asp-action="SignOut"><button type="button" class="btnUniversalAllOrders">Sign Out</button></a>
+            <a asp-controller="Authorise" asp-action="SignOut" type="button" class="btnUniversalAllOrders" &zwnj;>Sign Out</a>
         </nav>
     </header>
     <div class="container">
