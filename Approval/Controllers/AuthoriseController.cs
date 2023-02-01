@@ -77,12 +77,13 @@ namespace Approval.Controllers
         {
             List<Claim> claims = new List<Claim>()
             {
+                 new Claim(ClaimTypes.Name, userdata.UserName),
                  new Claim(ClaimTypes.Hash, userdata.IdUser.ToString()),
                  new Claim(ClaimTypes.Role, userdata.Role),
                  new Claim(ClaimTypes.Email, userdata.Email),
 
             };
-            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Hash, ClaimTypes.Role);
+            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
             ClaimsPrincipal avtorizeHead = new ClaimsPrincipal(identity);
             await HttpContext.SignInAsync(avtorizeHead);
         }

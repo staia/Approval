@@ -42,6 +42,41 @@ namespace Approval.Services
             return responce;
         }
 
+
+
+
+
+
+
+        //public BaseResponce<bool> Edit(ListOrder order)
+        //{
+        //    BaseResponce<bool> responce = new BaseResponce<bool>();
+        //    responce.Status = StatusCode.Ok;
+        //    responce.ErrorMessage = "OK";
+
+        //    try
+        //    { 
+        //        using (IDbConnection database = Database.Conneсt)
+        //        { 
+        //            database.Execute("UPDATE ListOrders SET  Title = @Title WHERE ID=4", order);
+        //        }
+        //        Bot.SendApproveOrder(840338962, "New Order #" + order.ID + " / " + order.Title); 
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        responce.Status = StatusCode.Error;
+        //        responce.ErrorMessage = ex.Message;
+        //    }
+        //    return responce;
+        //}
+
+
+
+
+
+
+
+
         public ListOrder GetOrder(int idOrder)
         {
             ListOrder order = new ListOrder();

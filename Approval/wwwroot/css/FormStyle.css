@@ -225,16 +225,28 @@
         outline: none;
     }
 
- 
- 
+
+
 
 .dropdownStyle {
     font-size: 15px;
     border: 1px solid #0E3386;
+    border-radius: 10px;
+    outline: none;
+    height: 45px;
+    width: 100%;
+    position: center;
+}
+.input2 {
+    /*font-size: 25 25 95 85;*/
+    /*font-weight: 50vw;*/
+    border: 2px solid #0E3386;
     border-radius: 15px;
     outline: none;
-    height: 40px;
-    width: 520px;
+    height: 45px;
+    width: 650px;
+    position: center;
+    margin-right: 100px;
 }
  
     input {

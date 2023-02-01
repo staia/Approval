@@ -31,27 +31,27 @@
             <input readonly asp-for="PlaceOfDelivery" class=inputPreview>
         </div>
         <div class="cells-style">
-            <label asp-for="Amount" labelPreview></label>
+                    <label asp-for="Amount" class=labelPreview></label>
             <input readonly asp-for="Amount" class=inputPreview>
         </div>
 
         <div class="cells-style">
-            <label asp-for="Attachment" labelPreview></label>
+                    <label asp-for="Attachment" class=labelPreview></label>
             <input readonly asp-for="Attachment" class=inputPreview>
         </div>
         <div class="cells-style">
-            <label asp-for="Price" labelPreview></label>
+            <label asp-for="Price"  class=labelPreview></label>
             <input readonly asp-for="Price" class=inputPreview>
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
 
         <div class="cells-style">
-            <label asp-for="DesireDate" labelPreview>Desire Date</label>
+                    <label asp-for="DesireDate" class=labelPreview>Desire Date</label>
             <input readonly asp-for="DesireDate" class=inputPreview>
         </div>
 
         <div class="cells-style">
-            <label asp-for="PurchasingNotes" labelPreview>Purchasing Notes</label>
+                    <label asp-for="PurchasingNotes" class=labelPreview>Purchasing Notes</label>
             <input readonly asp-for="PurchasingNotes" class=inputPreview>
         </div>
     </div>
@@ -62,27 +62,27 @@
     <div class="table-devide-22">
 
         <div class="cells-style">
-            <label asp-for="CreatedBy" labelPreview>Created by</label>
+                    <label asp-for="CreatedBy" class=labelPreview>Created by</label>
             <input readonly asp-for="CreatedBy" class=inputPreview>
         </div>
 
         <div class="cells-style">
-            <label asp-for="HeadOfDepartment" labelPreview>Head Of Department</label>
+                    <label asp-for="HeadOfDepartment" class=labelPreview>Head Of Department</label>
             <input readonly asp-for="HeadOfDepartment" class=inputPreview>
         </div>
 
         <div class="cells-style">
-            <label asp-for="GeneralManager" labelPreview>General Manager</label>
+                    <label asp-for="GeneralManager" class=labelPreview>General Manager</label>
             <input readonly asp-for="GeneralManager" class=inputPreview>
         </div>
 
         <div class="cells-style">
-            <label asp-for="HeadOfIT" labelPreview>Head Of IT</label>
+                    <label asp-for="HeadOfIT" class=labelPreview>Head Of IT</label>
             <input readonly asp-for="HeadOfIT" class=inputPreview>
         </div>
 
         <div class="cells-style">
-            <label asp-for="WarehouseManager" labelPreview>Warehouse Manager</label>
+                    <label asp-for="WarehouseManager" class=labelPreview>Warehouse Manager</label>
             <input readonly asp-for="WarehouseManager" class=inputPreview>
         </div>
     </div>
@@ -92,7 +92,7 @@
     </div>
     <div class="table-devide-22">
         <div class="cells-style">
-            <label asp-for="NumberFromERP" labelPreview>Number From ERP</label>
+                    <label asp-for="NumberFromERP" class=labelPreview>Number From ERP</label>
             <input readonly asp-for="NumberFromERP" class=inputPreview>
             </div><br />            
     </div>
@@ -117,7 +117,7 @@
                 <a type="button" asp-route-idRequest="@Model.ID" asp-action="MessageApprove" class="btnUniversalFormCreate" style="background-color:lightgreen; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/yes.png")" /> &zwnj;  Approve </a>
                 <a type="button" asp-route-idRequest="@Model.ID" asp-action="MessageApprove" class="btnUniversalFormCreate" style="background-color:coral; width:300px; left:200px; font-size:25px; color: black"> <img src="@Url.Content("~/images/no.png")" /> &zwnj; Decline</a>
         }
-        <a asp-controller="Home" asp-action="EditFromPreview" type="button" class="btnUniversalFormCreate">Change</a>
+        @*<a asp-controller="Home" asp-action="EditFromPreview" type="button" class="btUniversalFormCreate">Change</a>*@
         </form>
     </form>
 </div>

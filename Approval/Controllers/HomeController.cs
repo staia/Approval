@@ -15,15 +15,12 @@ namespace Approval.Controllers
         {
             _logger = logger;
             _order = order;
-        }
-       
-
-        //[Authorize(Roles ="Admin")]
+        }       
+  
         public IActionResult AllOrders([FromServices] PageData page)
         {            
             return View(page);
         }
-
   
         public IActionResult FormCreate()
         {
@@ -53,28 +50,28 @@ namespace Approval.Controllers
             var order = _order.GetOrder(idRequest);     // завернуть в BaseResponce
             return View(order);
         }
-        [HttpPost]
-        public IActionResult Edit(ListOrder orderCreate)
-        {
-            string Titel = orderCreate.Title;
 
-            return RedirectToAction("Saved", "Home");
+        //[HttpPost]
+        //public IActionResult Edit(ListOrder orderEdit)
+        //{
+        //    string Titel = orderEdit.Title;
 
-            //if (ModelState.IsValid)
-            //{
-            //    var result = _order.CreateOrder(orderCreate);
-            //    ViewData["ValidationMessage"] = result.ErrorMessage;
-            //    if (result.Status == Models.StatusCode.Ok)
-            //    {
-            //        ModelState.Clear();
-            //        return RedirectToAction("Saved", "Home");
-            //    }
-            //    return View(orderCreate);
-            //}
-            //ViewData["ValidationMessage"] = "Data is not required";
-            //return View(orderCreate);
-        }
+        //    //return RedirectToAction("Saved", "Home");
 
+        //    if (ModelState.IsValid)
+        //    {
+        //        var result = _order.CreateOrder(orderEdit);
+        //        ViewData["ValidationMessage"] = result.ErrorMessage;
+        //        if (result.Status == Models.StatusCode.Ok)
+        //        {
+        //            ModelState.Clear();
+        //            return RedirectToAction("Saved", "Home");
+        //        }
+        //        return View(orderEdit);
+        //    }
+        //    ViewData["ValidationMessage"] = "Data is not required";
+        //    return View(orderEdit);
+        //}
 
         public IActionResult AccessDenied()
         {
@@ -106,10 +103,7 @@ namespace Approval.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            throw new Exception();
-            // return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-         
+            throw new Exception();             
+        }        
     }
 }
